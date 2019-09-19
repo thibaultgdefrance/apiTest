@@ -1,0 +1,320 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MasterCodeModelStoreContainer" CdmEntityContainer="MasterCodeEntities">
+    <EntitySetMapping Name="Acces">
+      <EntityTypeMapping TypeName="MasterCodeModel.Acces">
+        <MappingFragment StoreEntitySet="Acces">
+          <ScalarProperty Name="IdAcces" ColumnName="IdAcces" />
+          <ScalarProperty Name="typeAcces" ColumnName="typeAcces" />
+          <ScalarProperty Name="niveauAcces" ColumnName="niveauAcces" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bloc">
+      <EntityTypeMapping TypeName="MasterCodeModel.Bloc">
+        <MappingFragment StoreEntitySet="Bloc">
+          <ScalarProperty Name="IdBloc" ColumnName="IdBloc" />
+          <ScalarProperty Name="cheminTemplate" ColumnName="cheminTemplate" />
+          <ScalarProperty Name="IdTypeBloc" ColumnName="IdTypeBloc" />
+          <ScalarProperty Name="IdReference" ColumnName="IdReference" />
+          <ScalarProperty Name="IdStyle" ColumnName="IdStyle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categorie">
+      <EntityTypeMapping TypeName="MasterCodeModel.Categorie">
+        <MappingFragment StoreEntitySet="Categorie">
+          <ScalarProperty Name="IdCategorie" ColumnName="IdCategorie" />
+          <ScalarProperty Name="LibelleCategorie" ColumnName="LibelleCategorie" />
+          <ScalarProperty Name="IdCategorieParent" ColumnName="IdCategorieParent" />
+          <ScalarProperty Name="IdAcces" ColumnName="IdAcces" />
+          <ScalarProperty Name="IdStatut" ColumnName="IdStatut" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Commentaire">
+      <EntityTypeMapping TypeName="MasterCodeModel.Commentaire">
+        <MappingFragment StoreEntitySet="Commentaire">
+          <ScalarProperty Name="IdCommentaire" ColumnName="IdCommentaire" />
+          <ScalarProperty Name="Texte" ColumnName="Texte" />
+          <ScalarProperty Name="IdPublication" ColumnName="IdPublication" />
+          <ScalarProperty Name="IdAuteur" ColumnName="IdAuteur" />
+          <ScalarProperty Name="DateCreation" ColumnName="DateCreation" />
+          <ScalarProperty Name="IdStatut" ColumnName="IdStatut" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Forum">
+      <EntityTypeMapping TypeName="MasterCodeModel.Forum">
+        <MappingFragment StoreEntitySet="Forum">
+          <ScalarProperty Name="IdForum" ColumnName="IdForum" />
+          <ScalarProperty Name="Sujet" ColumnName="Sujet" />
+          <ScalarProperty Name="DatePublication" ColumnName="DatePublication" />
+          <ScalarProperty Name="MotsClefs" ColumnName="MotsClefs" />
+          <ScalarProperty Name="Popularite" ColumnName="Popularite" />
+          <ScalarProperty Name="IdCategorie" ColumnName="IdCategorie" />
+          <ScalarProperty Name="IdStatut" ColumnName="IdStatut" />
+          <ScalarProperty Name="IdAcces" ColumnName="IdAcces" />
+          <ScalarProperty Name="IdLangue" ColumnName="IdLangue" />
+          <ScalarProperty Name="IdAuteur" ColumnName="IdAuteur" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Langue">
+      <EntityTypeMapping TypeName="MasterCodeModel.Langue">
+        <MappingFragment StoreEntitySet="Langue">
+          <ScalarProperty Name="IdLangue" ColumnName="IdLangue" />
+          <ScalarProperty Name="codeAlpha" ColumnName="codeAlpha" />
+          <ScalarProperty Name="Pays" ColumnName="Pays" />
+          <ScalarProperty Name="cheminIcone" ColumnName="cheminIcone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Maintenance">
+      <EntityTypeMapping TypeName="MasterCodeModel.Maintenance">
+        <MappingFragment StoreEntitySet="Maintenance">
+          <ScalarProperty Name="IdMaintenance" ColumnName="IdMaintenance" />
+          <ScalarProperty Name="ModeMaintenance" ColumnName="ModeMaintenance" />
+          <ScalarProperty Name="DateDebut" ColumnName="DateDebut" />
+          <ScalarProperty Name="DateFinPrevue" ColumnName="DateFinPrevue" />
+          <ScalarProperty Name="DateFinEffective" ColumnName="DateFinEffective" />
+          <ScalarProperty Name="IdResponsable" ColumnName="IdResponsable" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Media">
+      <EntityTypeMapping TypeName="MasterCodeModel.Media">
+        <MappingFragment StoreEntitySet="Media">
+          <ScalarProperty Name="IdMedia" ColumnName="IdMedia" />
+          <ScalarProperty Name="Chemin" ColumnName="Chemin" />
+          <ScalarProperty Name="C_Image" ColumnName="_Image" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DatePublication" ColumnName="DatePublication" />
+          <ScalarProperty Name="IdStatut" ColumnName="IdStatut" />
+          <ScalarProperty Name="IdAcces" ColumnName="IdAcces" />
+          <ScalarProperty Name="IdTypeMedia" ColumnName="IdTypeMedia" />
+          <ScalarProperty Name="IdAuteur" ColumnName="IdAuteur" />
+          <ScalarProperty Name="IdReference" ColumnName="IdReference" />
+          <ScalarProperty Name="IdTypeBloc" ColumnName="IdTypeBloc" />
+          <ScalarProperty Name="IdPublication" ColumnName="IdPublication" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Message">
+      <EntityTypeMapping TypeName="MasterCodeModel.Message">
+        <MappingFragment StoreEntitySet="Message">
+          <ScalarProperty Name="IdMessage" ColumnName="IdMessage" />
+          <ScalarProperty Name="IdMessageParent" ColumnName="IdMessageParent" />
+          <ScalarProperty Name="IdForum" ColumnName="IdForum" />
+          <ScalarProperty Name="Texte" ColumnName="Texte" />
+          <ScalarProperty Name="Popularite" ColumnName="Popularite" />
+          <ScalarProperty Name="IdStatut" ColumnName="IdStatut" />
+          <ScalarProperty Name="IdAuteur" ColumnName="IdAuteur" />
+          <ScalarProperty Name="DatePublication" ColumnName="DatePublication" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Messagerie">
+      <EntityTypeMapping TypeName="MasterCodeModel.Messagerie">
+        <MappingFragment StoreEntitySet="Messagerie">
+          <ScalarProperty Name="IdMessagerie" ColumnName="IdMessagerie" />
+          <ScalarProperty Name="Texte" ColumnName="Texte" />
+          <ScalarProperty Name="DatePublication" ColumnName="DatePublication" />
+          <ScalarProperty Name="DateFin" ColumnName="DateFin" />
+          <ScalarProperty Name="IdMessagerieParent" ColumnName="IdMessagerieParent" />
+          <ScalarProperty Name="IdAuteur" ColumnName="IdAuteur" />
+          <ScalarProperty Name="IdStatut" ColumnName="IdStatut" />
+          <ScalarProperty Name="IdAcces" ColumnName="IdAcces" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MotClef">
+      <EntityTypeMapping TypeName="MasterCodeModel.MotClef">
+        <MappingFragment StoreEntitySet="MotClef">
+          <ScalarProperty Name="IdMotClef" ColumnName="IdMotClef" />
+          <ScalarProperty Name="MotCle" ColumnName="MotCle" />
+          <ScalarProperty Name="IdLangue" ColumnName="IdLangue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MotClefCategorie">
+      <EntityTypeMapping TypeName="MasterCodeModel.MotClefCategorie">
+        <MappingFragment StoreEntitySet="MotClefCategorie">
+          <ScalarProperty Name="IdMotClefCategorie" ColumnName="IdMotClefCategorie" />
+          <ScalarProperty Name="IdMotClef" ColumnName="IdMotClef" />
+          <ScalarProperty Name="IdCategorie" ColumnName="IdCategorie" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Notification">
+      <EntityTypeMapping TypeName="MasterCodeModel.Notification">
+        <MappingFragment StoreEntitySet="Notification">
+          <ScalarProperty Name="IdNotification" ColumnName="IdNotification" />
+          <ScalarProperty Name="Objet" ColumnName="Objet" />
+          <ScalarProperty Name="Texte" ColumnName="Texte" />
+          <ScalarProperty Name="IdExpediteur" ColumnName="IdExpediteur" />
+          <ScalarProperty Name="IdDestinataire" ColumnName="IdDestinataire" />
+          <ScalarProperty Name="IdPieceJointe" ColumnName="IdPieceJointe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Page">
+      <EntityTypeMapping TypeName="MasterCodeModel.Page">
+        <MappingFragment StoreEntitySet="Page">
+          <ScalarProperty Name="IdPage" ColumnName="IdPage" />
+          <ScalarProperty Name="Titre" ColumnName="Titre" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="typePage" ColumnName="typePage" />
+          <ScalarProperty Name="Blocs" ColumnName="Blocs" />
+          <ScalarProperty Name="DatePublication" ColumnName="DatePublication" />
+          <ScalarProperty Name="DateModification" ColumnName="DateModification" />
+          <ScalarProperty Name="IdPublication" ColumnName="IdPublication" />
+          <ScalarProperty Name="IdAuteur" ColumnName="IdAuteur" />
+          <ScalarProperty Name="IdMaquette" ColumnName="IdMaquette" />
+          <ScalarProperty Name="IdCategorie" ColumnName="IdCategorie" />
+          <ScalarProperty Name="IdAcces" ColumnName="IdAcces" />
+          <ScalarProperty Name="IdStatut" ColumnName="IdStatut" />
+          <ScalarProperty Name="IdStyle" ColumnName="IdStyle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Priorite">
+      <EntityTypeMapping TypeName="MasterCodeModel.Priorite">
+        <MappingFragment StoreEntitySet="Priorite">
+          <ScalarProperty Name="IdPriorite" ColumnName="IdPriorite" />
+          <ScalarProperty Name="typePriorite" ColumnName="typePriorite" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Publication">
+      <EntityTypeMapping TypeName="MasterCodeModel.Publication">
+        <MappingFragment StoreEntitySet="Publication">
+          <ScalarProperty Name="IdPublication" ColumnName="IdPublication" />
+          <ScalarProperty Name="Titre" ColumnName="Titre" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Resume" ColumnName="Resume" />
+          <ScalarProperty Name="Texte" ColumnName="Texte" />
+          <ScalarProperty Name="Champ1" ColumnName="Champ1" />
+          <ScalarProperty Name="Champ2" ColumnName="Champ2" />
+          <ScalarProperty Name="Champ3" ColumnName="Champ3" />
+          <ScalarProperty Name="Champ4" ColumnName="Champ4" />
+          <ScalarProperty Name="DatePublication" ColumnName="DatePublication" />
+          <ScalarProperty Name="DateModification" ColumnName="DateModification" />
+          <ScalarProperty Name="Popularite" ColumnName="Popularite" />
+          <ScalarProperty Name="MotsClefs" ColumnName="MotsClefs" />
+          <ScalarProperty Name="IdAuteur" ColumnName="IdAuteur" />
+          <ScalarProperty Name="IdPublicationParent" ColumnName="IdPublicationParent" />
+          <ScalarProperty Name="IdTypePublication" ColumnName="IdTypePublication" />
+          <ScalarProperty Name="IdCategorie" ColumnName="IdCategorie" />
+          <ScalarProperty Name="IdAcces" ColumnName="IdAcces" />
+          <ScalarProperty Name="IdStatut" ColumnName="IdStatut" />
+          <ScalarProperty Name="IdLangue" ColumnName="IdLangue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Publicite">
+      <EntityTypeMapping TypeName="MasterCodeModel.Publicite">
+        <MappingFragment StoreEntitySet="Publicite">
+          <ScalarProperty Name="IdPublicite" ColumnName="IdPublicite" />
+          <ScalarProperty Name="Regie" ColumnName="Regie" />
+          <ScalarProperty Name="NbreClics" ColumnName="NbreClics" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Recherche">
+      <EntityTypeMapping TypeName="MasterCodeModel.Recherche">
+        <MappingFragment StoreEntitySet="Recherche">
+          <ScalarProperty Name="IdRecherche" ColumnName="IdRecherche" />
+          <ScalarProperty Name="Demande" ColumnName="Demande" />
+          <ScalarProperty Name="Resultat" ColumnName="Resultat" />
+          <ScalarProperty Name="NbreDemande" ColumnName="NbreDemande" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Statut">
+      <EntityTypeMapping TypeName="MasterCodeModel.Statut">
+        <MappingFragment StoreEntitySet="Statut">
+          <ScalarProperty Name="IdStatut" ColumnName="IdStatut" />
+          <ScalarProperty Name="typeStatut" ColumnName="typeStatut" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Style">
+      <EntityTypeMapping TypeName="MasterCodeModel.Style">
+        <MappingFragment StoreEntitySet="Style">
+          <ScalarProperty Name="IdStyle" ColumnName="IdStyle" />
+          <ScalarProperty Name="cheminStyle" ColumnName="cheminStyle" />
+          <ScalarProperty Name="feuilleStyle" ColumnName="feuilleStyle" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Traduction">
+      <EntityTypeMapping TypeName="MasterCodeModel.Traduction">
+        <MappingFragment StoreEntitySet="Traduction">
+          <ScalarProperty Name="IdTraduction" ColumnName="IdTraduction" />
+          <ScalarProperty Name="DefaultTexte" ColumnName="DefaultTexte" />
+          <ScalarProperty Name="TraductionTexte" ColumnName="TraductionTexte" />
+          <ScalarProperty Name="IdLangue" ColumnName="IdLangue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Trophee">
+      <EntityTypeMapping TypeName="MasterCodeModel.Trophee">
+        <MappingFragment StoreEntitySet="Trophee">
+          <ScalarProperty Name="IdTrophee" ColumnName="IdTrophee" />
+          <ScalarProperty Name="typeTrophee" ColumnName="typeTrophee" />
+          <ScalarProperty Name="cheminIcone" ColumnName="cheminIcone" />
+          <ScalarProperty Name="Seuil" ColumnName="Seuil" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypeBloc">
+      <EntityTypeMapping TypeName="MasterCodeModel.TypeBloc">
+        <MappingFragment StoreEntitySet="TypeBloc">
+          <ScalarProperty Name="IdTypeBloc" ColumnName="IdTypeBloc" />
+          <ScalarProperty Name="NomBloc" ColumnName="NomBloc" />
+          <ScalarProperty Name="IdAcces" ColumnName="IdAcces" />
+          <ScalarProperty Name="IdStatut" ColumnName="IdStatut" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypeMedia">
+      <EntityTypeMapping TypeName="MasterCodeModel.TypeMedia">
+        <MappingFragment StoreEntitySet="TypeMedia">
+          <ScalarProperty Name="IdTypeMedia" ColumnName="IdTypeMedia" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypePublication">
+      <EntityTypeMapping TypeName="MasterCodeModel.TypePublication">
+        <MappingFragment StoreEntitySet="TypePublication">
+          <ScalarProperty Name="IdTypePublication" ColumnName="IdTypePublication" />
+          <ScalarProperty Name="Publication" ColumnName="Publication" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Utilisateur">
+      <EntityTypeMapping TypeName="MasterCodeModel.Utilisateur">
+        <MappingFragment StoreEntitySet="Utilisateur">
+          <ScalarProperty Name="IdUtilisateur" ColumnName="IdUtilisateur" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+          <ScalarProperty Name="Pseudo" ColumnName="Pseudo" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="MotdePasse" ColumnName="MotdePasse" />
+          <ScalarProperty Name="MotsClefs" ColumnName="MotsClefs" />
+          <ScalarProperty Name="IdStatut" ColumnName="IdStatut" />
+          <ScalarProperty Name="IdAcces" ColumnName="IdAcces" />
+          <ScalarProperty Name="IdLangue" ColumnName="IdLangue" />
+          <ScalarProperty Name="IdTrophee" ColumnName="IdTrophee" />
+          <ScalarProperty Name="DateCreation" ColumnName="DateCreation" />
+          <ScalarProperty Name="Popularite" ColumnName="Popularite" />
+          <ScalarProperty Name="CheminAvatar" ColumnName="CheminAvatar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

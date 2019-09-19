@@ -1,0 +1,2691 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MasterCodeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Acces">
+          <Key>
+            <PropertyRef Name="IdAcces" />
+          </Key>
+          <Property Name="IdAcces" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="typeAcces" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="niveauAcces" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Bloc">
+          <Key>
+            <PropertyRef Name="IdBloc" />
+          </Key>
+          <Property Name="IdBloc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cheminTemplate" Type="varchar(max)" Nullable="false" />
+          <Property Name="IdTypeBloc" Type="int" Nullable="false" />
+          <Property Name="IdReference" Type="int" Nullable="false" />
+          <Property Name="IdStyle" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Categorie">
+          <Key>
+            <PropertyRef Name="IdCategorie" />
+          </Key>
+          <Property Name="IdCategorie" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LibelleCategorie" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdCategorieParent" Type="int" />
+          <Property Name="IdAcces" Type="int" Nullable="false" />
+          <Property Name="IdStatut" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Commentaire">
+          <Key>
+            <PropertyRef Name="IdCommentaire" />
+          </Key>
+          <Property Name="IdCommentaire" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Texte" Type="varchar(max)" />
+          <Property Name="IdPublication" Type="int" Nullable="false" />
+          <Property Name="IdAuteur" Type="int" Nullable="false" />
+          <Property Name="DateCreation" Type="datetime" Nullable="false" />
+          <Property Name="IdStatut" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Forum">
+          <Key>
+            <PropertyRef Name="IdForum" />
+          </Key>
+          <Property Name="IdForum" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sujet" Type="varchar(max)" Nullable="false" />
+          <Property Name="DatePublication" Type="datetime" Nullable="false" />
+          <Property Name="MotsClefs" Type="varchar(max)" />
+          <Property Name="Popularite" Type="int" Nullable="false" />
+          <Property Name="IdCategorie" Type="int" Nullable="false" />
+          <Property Name="IdStatut" Type="int" Nullable="false" />
+          <Property Name="IdAcces" Type="int" Nullable="false" />
+          <Property Name="IdLangue" Type="int" Nullable="false" />
+          <Property Name="IdAuteur" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Langue">
+          <Key>
+            <PropertyRef Name="IdLangue" />
+          </Key>
+          <Property Name="IdLangue" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codeAlpha" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="Pays" Type="varchar(max)" />
+          <Property Name="cheminIcone" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Maintenance">
+          <Key>
+            <PropertyRef Name="IdMaintenance" />
+          </Key>
+          <Property Name="IdMaintenance" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ModeMaintenance" Type="tinyint" Nullable="false" />
+          <Property Name="DateDebut" Type="datetime" Nullable="false" />
+          <Property Name="DateFinPrevue" Type="datetime" Nullable="false" />
+          <Property Name="DateFinEffective" Type="datetime" />
+          <Property Name="IdResponsable" Type="int" />
+        </EntityType>
+        <EntityType Name="Media">
+          <Key>
+            <PropertyRef Name="IdMedia" />
+          </Key>
+          <Property Name="IdMedia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Chemin" Type="varchar(max)" />
+          <Property Name="_Image" Type="image" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="DatePublication" Type="datetime" Nullable="false" />
+          <Property Name="IdStatut" Type="int" Nullable="false" />
+          <Property Name="IdAcces" Type="int" Nullable="false" />
+          <Property Name="IdTypeMedia" Type="int" Nullable="false" />
+          <Property Name="IdAuteur" Type="int" Nullable="false" />
+          <Property Name="IdReference" Type="int" />
+          <Property Name="IdTypeBloc" Type="int" />
+          <Property Name="IdPublication" Type="int" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="IdMessage" />
+          </Key>
+          <Property Name="IdMessage" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdMessageParent" Type="int" />
+          <Property Name="IdForum" Type="int" Nullable="false" />
+          <Property Name="Texte" Type="varchar(max)" Nullable="false" />
+          <Property Name="Popularite" Type="int" />
+          <Property Name="IdStatut" Type="int" />
+          <Property Name="IdAuteur" Type="int" Nullable="false" />
+          <Property Name="DatePublication" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Messagerie">
+          <Key>
+            <PropertyRef Name="IdMessagerie" />
+          </Key>
+          <Property Name="IdMessagerie" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Texte" Type="text" />
+          <Property Name="DatePublication" Type="datetime" Nullable="false" />
+          <Property Name="DateFin" Type="datetime" Nullable="false" />
+          <Property Name="IdMessagerieParent" Type="int" />
+          <Property Name="IdAuteur" Type="int" />
+          <Property Name="IdStatut" Type="int" Nullable="false" />
+          <Property Name="IdAcces" Type="int" />
+        </EntityType>
+        <EntityType Name="MotClef">
+          <Key>
+            <PropertyRef Name="IdMotClef" />
+          </Key>
+          <Property Name="IdMotClef" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MotCle" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdLangue" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MotClefCategorie">
+          <Key>
+            <PropertyRef Name="IdMotClefCategorie" />
+          </Key>
+          <Property Name="IdMotClefCategorie" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdMotClef" Type="int" Nullable="false" />
+          <Property Name="IdCategorie" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Notification">
+          <Key>
+            <PropertyRef Name="IdNotification" />
+          </Key>
+          <Property Name="IdNotification" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Objet" Type="varchar(max)" Nullable="false" />
+          <Property Name="Texte" Type="text" Nullable="false" />
+          <Property Name="IdExpediteur" Type="int" Nullable="false" />
+          <Property Name="IdDestinataire" Type="int" Nullable="false" />
+          <Property Name="IdPieceJointe" Type="int" />
+        </EntityType>
+        <EntityType Name="Page">
+          <Key>
+            <PropertyRef Name="IdPage" />
+          </Key>
+          <Property Name="IdPage" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Titre" Type="varchar" MaxLength="50" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+          <Property Name="typePage" Type="varchar" MaxLength="50" />
+          <Property Name="Blocs" Type="varchar(max)" Nullable="false" />
+          <Property Name="DatePublication" Type="datetime" Nullable="false" />
+          <Property Name="DateModification" Type="datetime" Nullable="false" />
+          <Property Name="IdPublication" Type="int" />
+          <Property Name="IdAuteur" Type="int" Nullable="false" />
+          <Property Name="IdMaquette" Type="int" Nullable="false" />
+          <Property Name="IdCategorie" Type="int" Nullable="false" />
+          <Property Name="IdAcces" Type="int" Nullable="false" />
+          <Property Name="IdStatut" Type="int" Nullable="false" />
+          <Property Name="IdStyle" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Priorite">
+          <Key>
+            <PropertyRef Name="IdPriorite" />
+          </Key>
+          <Property Name="IdPriorite" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="typePriorite" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Publication">
+          <Key>
+            <PropertyRef Name="IdPublication" />
+          </Key>
+          <Property Name="IdPublication" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Titre" Type="varchar" MaxLength="50" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="Resume" Type="varchar(max)" />
+          <Property Name="Texte" Type="text" />
+          <Property Name="Champ1" Type="text" />
+          <Property Name="Champ2" Type="text" />
+          <Property Name="Champ3" Type="text" />
+          <Property Name="Champ4" Type="text" />
+          <Property Name="DatePublication" Type="datetime" Nullable="false" />
+          <Property Name="DateModification" Type="datetime" />
+          <Property Name="Popularite" Type="int" Nullable="false" />
+          <Property Name="MotsClefs" Type="varchar(max)" />
+          <Property Name="IdAuteur" Type="int" />
+          <Property Name="IdPublicationParent" Type="int" />
+          <Property Name="IdTypePublication" Type="int" />
+          <Property Name="IdCategorie" Type="int" />
+          <Property Name="IdAcces" Type="int" />
+          <Property Name="IdStatut" Type="int" Nullable="false" />
+          <Property Name="IdLangue" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Publicite">
+          <Key>
+            <PropertyRef Name="IdPublicite" />
+          </Key>
+          <Property Name="IdPublicite" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Regie" Type="varchar(max)" Nullable="false" />
+          <Property Name="NbreClics" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Recherche">
+          <Key>
+            <PropertyRef Name="IdRecherche" />
+          </Key>
+          <Property Name="IdRecherche" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Demande" Type="varchar(max)" Nullable="false" />
+          <Property Name="Resultat" Type="text" Nullable="false" />
+          <Property Name="NbreDemande" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Statut">
+          <Key>
+            <PropertyRef Name="IdStatut" />
+          </Key>
+          <Property Name="IdStatut" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="typeStatut" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Style">
+          <Key>
+            <PropertyRef Name="IdStyle" />
+          </Key>
+          <Property Name="IdStyle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cheminStyle" Type="varchar(max)" />
+          <Property Name="feuilleStyle" Type="text" />
+          <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Traduction">
+          <Key>
+            <PropertyRef Name="IdTraduction" />
+          </Key>
+          <Property Name="IdTraduction" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DefaultTexte" Type="varchar(max)" Nullable="false" />
+          <Property Name="TraductionTexte" Type="varchar(max)" Nullable="false" />
+          <Property Name="IdLangue" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Trophee">
+          <Key>
+            <PropertyRef Name="IdTrophee" />
+          </Key>
+          <Property Name="IdTrophee" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="typeTrophee" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="cheminIcone" Type="varchar(max)" />
+          <Property Name="Seuil" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="TypeBloc">
+          <Key>
+            <PropertyRef Name="IdTypeBloc" />
+          </Key>
+          <Property Name="IdTypeBloc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NomBloc" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdAcces" Type="int" Nullable="false" />
+          <Property Name="IdStatut" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TypeMedia">
+          <Key>
+            <PropertyRef Name="IdTypeMedia" />
+          </Key>
+          <Property Name="IdTypeMedia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TypePublication">
+          <Key>
+            <PropertyRef Name="IdTypePublication" />
+          </Key>
+          <Property Name="IdTypePublication" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Publication" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Utilisateur">
+          <Key>
+            <PropertyRef Name="IdUtilisateur" />
+          </Key>
+          <Property Name="IdUtilisateur" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom" Type="varchar" MaxLength="50" />
+          <Property Name="Prenom" Type="varchar" MaxLength="50" />
+          <Property Name="Pseudo" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MotdePasse" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MotsClefs" Type="varchar(max)" />
+          <Property Name="IdStatut" Type="int" Nullable="false" />
+          <Property Name="IdAcces" Type="int" Nullable="false" />
+          <Property Name="IdLangue" Type="int" />
+          <Property Name="IdTrophee" Type="int" />
+          <Property Name="DateCreation" Type="datetime" Nullable="false" />
+          <Property Name="Popularite" Type="int" Nullable="false" />
+          <Property Name="CheminAvatar" Type="text" />
+        </EntityType>
+        <Association Name="FK__Bloc__IdStyle__6C190EBB">
+          <End Role="Style" Type="Self.Style" Multiplicity="1" />
+          <End Role="Bloc" Type="Self.Bloc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Style">
+              <PropertyRef Name="IdStyle" />
+            </Principal>
+            <Dependent Role="Bloc">
+              <PropertyRef Name="IdStyle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Bloc__IdTypeBloc__6D0D32F4">
+          <End Role="TypeBloc" Type="Self.TypeBloc" Multiplicity="1" />
+          <End Role="Bloc" Type="Self.Bloc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeBloc">
+              <PropertyRef Name="IdTypeBloc" />
+            </Principal>
+            <Dependent Role="Bloc">
+              <PropertyRef Name="IdTypeBloc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Categorie__IdAcc__6E01572D">
+          <End Role="Acces" Type="Self.Acces" Multiplicity="1" />
+          <End Role="Categorie" Type="Self.Categorie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Acces">
+              <PropertyRef Name="IdAcces" />
+            </Principal>
+            <Dependent Role="Categorie">
+              <PropertyRef Name="IdAcces" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Categorie__IdSta__6EF57B66">
+          <End Role="Statut" Type="Self.Statut" Multiplicity="1" />
+          <End Role="Categorie" Type="Self.Categorie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statut">
+              <PropertyRef Name="IdStatut" />
+            </Principal>
+            <Dependent Role="Categorie">
+              <PropertyRef Name="IdStatut" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Commentai__IdAut__6FE99F9F">
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1" />
+          <End Role="Commentaire" Type="Self.Commentaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilisateur">
+              <PropertyRef Name="IdUtilisateur" />
+            </Principal>
+            <Dependent Role="Commentaire">
+              <PropertyRef Name="IdAuteur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Commentai__IdPub__70DDC3D8">
+          <End Role="Publication" Type="Self.Publication" Multiplicity="1" />
+          <End Role="Commentaire" Type="Self.Commentaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Publication">
+              <PropertyRef Name="IdPublication" />
+            </Principal>
+            <Dependent Role="Commentaire">
+              <PropertyRef Name="IdPublication" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Commentai__IdSta__71D1E811">
+          <End Role="Statut" Type="Self.Statut" Multiplicity="1" />
+          <End Role="Commentaire" Type="Self.Commentaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statut">
+              <PropertyRef Name="IdStatut" />
+            </Principal>
+            <Dependent Role="Commentaire">
+              <PropertyRef Name="IdStatut" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Forum__IdAcces__72C60C4A">
+          <End Role="Acces" Type="Self.Acces" Multiplicity="1" />
+          <End Role="Forum" Type="Self.Forum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Acces">
+              <PropertyRef Name="IdAcces" />
+            </Principal>
+            <Dependent Role="Forum">
+              <PropertyRef Name="IdAcces" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Forum__IdAuteur__29221CFB">
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1" />
+          <End Role="Forum" Type="Self.Forum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilisateur">
+              <PropertyRef Name="IdUtilisateur" />
+            </Principal>
+            <Dependent Role="Forum">
+              <PropertyRef Name="IdAuteur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Forum__IdCategor__73BA3083">
+          <End Role="Categorie" Type="Self.Categorie" Multiplicity="1" />
+          <End Role="Forum" Type="Self.Forum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorie">
+              <PropertyRef Name="IdCategorie" />
+            </Principal>
+            <Dependent Role="Forum">
+              <PropertyRef Name="IdCategorie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Forum__IdLangue__74AE54BC">
+          <End Role="Langue" Type="Self.Langue" Multiplicity="1" />
+          <End Role="Forum" Type="Self.Forum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Langue">
+              <PropertyRef Name="IdLangue" />
+            </Principal>
+            <Dependent Role="Forum">
+              <PropertyRef Name="IdLangue" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Forum__IdStatut__75A278F5">
+          <End Role="Statut" Type="Self.Statut" Multiplicity="1" />
+          <End Role="Forum" Type="Self.Forum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statut">
+              <PropertyRef Name="IdStatut" />
+            </Principal>
+            <Dependent Role="Forum">
+              <PropertyRef Name="IdStatut" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Maintenan__IdRes__76969D2E">
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="0..1" />
+          <End Role="Maintenance" Type="Self.Maintenance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilisateur">
+              <PropertyRef Name="IdUtilisateur" />
+            </Principal>
+            <Dependent Role="Maintenance">
+              <PropertyRef Name="IdResponsable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Media__IdAcces__778AC167">
+          <End Role="Acces" Type="Self.Acces" Multiplicity="1" />
+          <End Role="Media" Type="Self.Media" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Acces">
+              <PropertyRef Name="IdAcces" />
+            </Principal>
+            <Dependent Role="Media">
+              <PropertyRef Name="IdAcces" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Media__IdAuteur__787EE5A0">
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1" />
+          <End Role="Media" Type="Self.Media" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilisateur">
+              <PropertyRef Name="IdUtilisateur" />
+            </Principal>
+            <Dependent Role="Media">
+              <PropertyRef Name="IdAuteur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Media__IdPublica__1AD3FDA4">
+          <End Role="Publication" Type="Self.Publication" Multiplicity="0..1" />
+          <End Role="Media" Type="Self.Media" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Publication">
+              <PropertyRef Name="IdPublication" />
+            </Principal>
+            <Dependent Role="Media">
+              <PropertyRef Name="IdPublication" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Media__IdStatut__797309D9">
+          <End Role="Statut" Type="Self.Statut" Multiplicity="1" />
+          <End Role="Media" Type="Self.Media" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statut">
+              <PropertyRef Name="IdStatut" />
+            </Principal>
+            <Dependent Role="Media">
+              <PropertyRef Name="IdStatut" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Media__IdTypeBlo__7A672E12">
+          <End Role="TypeBloc" Type="Self.TypeBloc" Multiplicity="0..1" />
+          <End Role="Media" Type="Self.Media" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeBloc">
+              <PropertyRef Name="IdTypeBloc" />
+            </Principal>
+            <Dependent Role="Media">
+              <PropertyRef Name="IdTypeBloc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Media__IdTypeMed__7B5B524B">
+          <End Role="TypeMedia" Type="Self.TypeMedia" Multiplicity="1" />
+          <End Role="Media" Type="Self.Media" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeMedia">
+              <PropertyRef Name="IdTypeMedia" />
+            </Principal>
+            <Dependent Role="Media">
+              <PropertyRef Name="IdTypeMedia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Message__IdAuteu__7C4F7684">
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1" />
+          <End Role="Message" Type="Self.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilisateur">
+              <PropertyRef Name="IdUtilisateur" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="IdAuteur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Message__IdForum__7D439ABD">
+          <End Role="Forum" Type="Self.Forum" Multiplicity="1" />
+          <End Role="Message" Type="Self.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Forum">
+              <PropertyRef Name="IdForum" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="IdForum" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Message__IdStatu__3B40CD36">
+          <End Role="Statut" Type="Self.Statut" Multiplicity="0..1" />
+          <End Role="Message" Type="Self.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statut">
+              <PropertyRef Name="IdStatut" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="IdStatut" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Messageri__IdAcc__7F2BE32F">
+          <End Role="Acces" Type="Self.Acces" Multiplicity="0..1" />
+          <End Role="Messagerie" Type="Self.Messagerie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Acces">
+              <PropertyRef Name="IdAcces" />
+            </Principal>
+            <Dependent Role="Messagerie">
+              <PropertyRef Name="IdAcces" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Messageri__IdAut__00200768">
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="0..1" />
+          <End Role="Messagerie" Type="Self.Messagerie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilisateur">
+              <PropertyRef Name="IdUtilisateur" />
+            </Principal>
+            <Dependent Role="Messagerie">
+              <PropertyRef Name="IdAuteur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Messageri__IdSta__01142BA1">
+          <End Role="Statut" Type="Self.Statut" Multiplicity="1" />
+          <End Role="Messagerie" Type="Self.Messagerie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statut">
+              <PropertyRef Name="IdStatut" />
+            </Principal>
+            <Dependent Role="Messagerie">
+              <PropertyRef Name="IdStatut" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MotClef__IdLangu__02084FDA">
+          <End Role="Langue" Type="Self.Langue" Multiplicity="1" />
+          <End Role="MotClef" Type="Self.MotClef" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Langue">
+              <PropertyRef Name="IdLangue" />
+            </Principal>
+            <Dependent Role="MotClef">
+              <PropertyRef Name="IdLangue" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MotClefCa__IdCat__02FC7413">
+          <End Role="Categorie" Type="Self.Categorie" Multiplicity="1" />
+          <End Role="MotClefCategorie" Type="Self.MotClefCategorie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorie">
+              <PropertyRef Name="IdCategorie" />
+            </Principal>
+            <Dependent Role="MotClefCategorie">
+              <PropertyRef Name="IdCategorie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MotClefCa__IdMot__03F0984C">
+          <End Role="MotClef" Type="Self.MotClef" Multiplicity="1" />
+          <End Role="MotClefCategorie" Type="Self.MotClefCategorie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MotClef">
+              <PropertyRef Name="IdMotClef" />
+            </Principal>
+            <Dependent Role="MotClefCategorie">
+              <PropertyRef Name="IdMotClef" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Notificat__IdDes__04E4BC85">
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1" />
+          <End Role="Notification" Type="Self.Notification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilisateur">
+              <PropertyRef Name="IdUtilisateur" />
+            </Principal>
+            <Dependent Role="Notification">
+              <PropertyRef Name="IdDestinataire" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Notificat__IdExp__05D8E0BE">
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1" />
+          <End Role="Notification" Type="Self.Notification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilisateur">
+              <PropertyRef Name="IdUtilisateur" />
+            </Principal>
+            <Dependent Role="Notification">
+              <PropertyRef Name="IdExpediteur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Notificat__IdPie__06CD04F7">
+          <End Role="Media" Type="Self.Media" Multiplicity="0..1" />
+          <End Role="Notification" Type="Self.Notification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Media">
+              <PropertyRef Name="IdMedia" />
+            </Principal>
+            <Dependent Role="Notification">
+              <PropertyRef Name="IdPieceJointe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Page__IdAcces__07C12930">
+          <End Role="Acces" Type="Self.Acces" Multiplicity="1" />
+          <End Role="Page" Type="Self.Page" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Acces">
+              <PropertyRef Name="IdAcces" />
+            </Principal>
+            <Dependent Role="Page">
+              <PropertyRef Name="IdAcces" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Page__IdAuteur__08B54D69">
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1" />
+          <End Role="Page" Type="Self.Page" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilisateur">
+              <PropertyRef Name="IdUtilisateur" />
+            </Principal>
+            <Dependent Role="Page">
+              <PropertyRef Name="IdAuteur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Page__IdCategori__09A971A2">
+          <End Role="Categorie" Type="Self.Categorie" Multiplicity="1" />
+          <End Role="Page" Type="Self.Page" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorie">
+              <PropertyRef Name="IdCategorie" />
+            </Principal>
+            <Dependent Role="Page">
+              <PropertyRef Name="IdCategorie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Page__IdMaquette__0A9D95DB">
+          <End Role="Media" Type="Self.Media" Multiplicity="1" />
+          <End Role="Page" Type="Self.Page" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Media">
+              <PropertyRef Name="IdMedia" />
+            </Principal>
+            <Dependent Role="Page">
+              <PropertyRef Name="IdMaquette" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Page__IdPublicat__0B91BA14">
+          <End Role="Publication" Type="Self.Publication" Multiplicity="0..1" />
+          <End Role="Page" Type="Self.Page" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Publication">
+              <PropertyRef Name="IdPublication" />
+            </Principal>
+            <Dependent Role="Page">
+              <PropertyRef Name="IdPublication" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Page__IdStatut__0C85DE4D">
+          <End Role="Statut" Type="Self.Statut" Multiplicity="1" />
+          <End Role="Page" Type="Self.Page" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statut">
+              <PropertyRef Name="IdStatut" />
+            </Principal>
+            <Dependent Role="Page">
+              <PropertyRef Name="IdStatut" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Page__IdStyle__0D7A0286">
+          <End Role="Style" Type="Self.Style" Multiplicity="1" />
+          <End Role="Page" Type="Self.Page" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Style">
+              <PropertyRef Name="IdStyle" />
+            </Principal>
+            <Dependent Role="Page">
+              <PropertyRef Name="IdStyle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Publicati__IdAcc__0E6E26BF">
+          <End Role="Acces" Type="Self.Acces" Multiplicity="0..1" />
+          <End Role="Publication" Type="Self.Publication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Acces">
+              <PropertyRef Name="IdAcces" />
+            </Principal>
+            <Dependent Role="Publication">
+              <PropertyRef Name="IdAcces" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Publicati__IdAut__0F624AF8">
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="0..1" />
+          <End Role="Publication" Type="Self.Publication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilisateur">
+              <PropertyRef Name="IdUtilisateur" />
+            </Principal>
+            <Dependent Role="Publication">
+              <PropertyRef Name="IdAuteur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Publicati__IdCat__10566F31">
+          <End Role="Categorie" Type="Self.Categorie" Multiplicity="0..1" />
+          <End Role="Publication" Type="Self.Publication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorie">
+              <PropertyRef Name="IdCategorie" />
+            </Principal>
+            <Dependent Role="Publication">
+              <PropertyRef Name="IdCategorie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Publicati__IdLan__114A936A">
+          <End Role="Langue" Type="Self.Langue" Multiplicity="1" />
+          <End Role="Publication" Type="Self.Publication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Langue">
+              <PropertyRef Name="IdLangue" />
+            </Principal>
+            <Dependent Role="Publication">
+              <PropertyRef Name="IdLangue" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Publicati__IdSta__123EB7A3">
+          <End Role="Statut" Type="Self.Statut" Multiplicity="1" />
+          <End Role="Publication" Type="Self.Publication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statut">
+              <PropertyRef Name="IdStatut" />
+            </Principal>
+            <Dependent Role="Publication">
+              <PropertyRef Name="IdStatut" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Publicati__IdTyp__1332DBDC">
+          <End Role="TypePublication" Type="Self.TypePublication" Multiplicity="0..1" />
+          <End Role="Publication" Type="Self.Publication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypePublication">
+              <PropertyRef Name="IdTypePublication" />
+            </Principal>
+            <Dependent Role="Publication">
+              <PropertyRef Name="IdTypePublication" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Traductio__IdLan__14270015">
+          <End Role="Langue" Type="Self.Langue" Multiplicity="1" />
+          <End Role="Traduction" Type="Self.Traduction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Langue">
+              <PropertyRef Name="IdLangue" />
+            </Principal>
+            <Dependent Role="Traduction">
+              <PropertyRef Name="IdLangue" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TypeBloc__IdAcce__151B244E">
+          <End Role="Acces" Type="Self.Acces" Multiplicity="1" />
+          <End Role="TypeBloc" Type="Self.TypeBloc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Acces">
+              <PropertyRef Name="IdAcces" />
+            </Principal>
+            <Dependent Role="TypeBloc">
+              <PropertyRef Name="IdAcces" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TypeBloc__IdStat__160F4887">
+          <End Role="Statut" Type="Self.Statut" Multiplicity="1" />
+          <End Role="TypeBloc" Type="Self.TypeBloc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statut">
+              <PropertyRef Name="IdStatut" />
+            </Principal>
+            <Dependent Role="TypeBloc">
+              <PropertyRef Name="IdStatut" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Utilisate__IdAcc__17036CC0">
+          <End Role="Acces" Type="Self.Acces" Multiplicity="1" />
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Acces">
+              <PropertyRef Name="IdAcces" />
+            </Principal>
+            <Dependent Role="Utilisateur">
+              <PropertyRef Name="IdAcces" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Utilisate__IdSta__17F790F9">
+          <End Role="Statut" Type="Self.Statut" Multiplicity="1" />
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statut">
+              <PropertyRef Name="IdStatut" />
+            </Principal>
+            <Dependent Role="Utilisateur">
+              <PropertyRef Name="IdStatut" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Utilisate__IdTro__18EBB532">
+          <End Role="Trophee" Type="Self.Trophee" Multiplicity="0..1" />
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trophee">
+              <PropertyRef Name="IdTrophee" />
+            </Principal>
+            <Dependent Role="Utilisateur">
+              <PropertyRef Name="IdTrophee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MasterCodeModelStoreContainer">
+          <EntitySet Name="Acces" EntityType="Self.Acces" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bloc" EntityType="Self.Bloc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categorie" EntityType="Self.Categorie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Commentaire" EntityType="Self.Commentaire" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Forum" EntityType="Self.Forum" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Langue" EntityType="Self.Langue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Maintenance" EntityType="Self.Maintenance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Media" EntityType="Self.Media" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Message" EntityType="Self.Message" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Messagerie" EntityType="Self.Messagerie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MotClef" EntityType="Self.MotClef" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MotClefCategorie" EntityType="Self.MotClefCategorie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notification" EntityType="Self.Notification" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Page" EntityType="Self.Page" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Priorite" EntityType="Self.Priorite" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Publication" EntityType="Self.Publication" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Publicite" EntityType="Self.Publicite" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Recherche" EntityType="Self.Recherche" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Statut" EntityType="Self.Statut" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Style" EntityType="Self.Style" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Traduction" EntityType="Self.Traduction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Trophee" EntityType="Self.Trophee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeBloc" EntityType="Self.TypeBloc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeMedia" EntityType="Self.TypeMedia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypePublication" EntityType="Self.TypePublication" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Utilisateur" EntityType="Self.Utilisateur" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Bloc__IdStyle__6C190EBB" Association="Self.FK__Bloc__IdStyle__6C190EBB">
+            <End Role="Style" EntitySet="Style" />
+            <End Role="Bloc" EntitySet="Bloc" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Bloc__IdTypeBloc__6D0D32F4" Association="Self.FK__Bloc__IdTypeBloc__6D0D32F4">
+            <End Role="TypeBloc" EntitySet="TypeBloc" />
+            <End Role="Bloc" EntitySet="Bloc" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Categorie__IdAcc__6E01572D" Association="Self.FK__Categorie__IdAcc__6E01572D">
+            <End Role="Acces" EntitySet="Acces" />
+            <End Role="Categorie" EntitySet="Categorie" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Categorie__IdSta__6EF57B66" Association="Self.FK__Categorie__IdSta__6EF57B66">
+            <End Role="Statut" EntitySet="Statut" />
+            <End Role="Categorie" EntitySet="Categorie" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Commentai__IdAut__6FE99F9F" Association="Self.FK__Commentai__IdAut__6FE99F9F">
+            <End Role="Utilisateur" EntitySet="Utilisateur" />
+            <End Role="Commentaire" EntitySet="Commentaire" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Commentai__IdPub__70DDC3D8" Association="Self.FK__Commentai__IdPub__70DDC3D8">
+            <End Role="Publication" EntitySet="Publication" />
+            <End Role="Commentaire" EntitySet="Commentaire" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Commentai__IdSta__71D1E811" Association="Self.FK__Commentai__IdSta__71D1E811">
+            <End Role="Statut" EntitySet="Statut" />
+            <End Role="Commentaire" EntitySet="Commentaire" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Forum__IdAcces__72C60C4A" Association="Self.FK__Forum__IdAcces__72C60C4A">
+            <End Role="Acces" EntitySet="Acces" />
+            <End Role="Forum" EntitySet="Forum" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Forum__IdAuteur__29221CFB" Association="Self.FK__Forum__IdAuteur__29221CFB">
+            <End Role="Utilisateur" EntitySet="Utilisateur" />
+            <End Role="Forum" EntitySet="Forum" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Forum__IdCategor__73BA3083" Association="Self.FK__Forum__IdCategor__73BA3083">
+            <End Role="Categorie" EntitySet="Categorie" />
+            <End Role="Forum" EntitySet="Forum" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Forum__IdLangue__74AE54BC" Association="Self.FK__Forum__IdLangue__74AE54BC">
+            <End Role="Langue" EntitySet="Langue" />
+            <End Role="Forum" EntitySet="Forum" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Forum__IdStatut__75A278F5" Association="Self.FK__Forum__IdStatut__75A278F5">
+            <End Role="Statut" EntitySet="Statut" />
+            <End Role="Forum" EntitySet="Forum" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Maintenan__IdRes__76969D2E" Association="Self.FK__Maintenan__IdRes__76969D2E">
+            <End Role="Utilisateur" EntitySet="Utilisateur" />
+            <End Role="Maintenance" EntitySet="Maintenance" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Media__IdAcces__778AC167" Association="Self.FK__Media__IdAcces__778AC167">
+            <End Role="Acces" EntitySet="Acces" />
+            <End Role="Media" EntitySet="Media" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Media__IdAuteur__787EE5A0" Association="Self.FK__Media__IdAuteur__787EE5A0">
+            <End Role="Utilisateur" EntitySet="Utilisateur" />
+            <End Role="Media" EntitySet="Media" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Media__IdPublica__1AD3FDA4" Association="Self.FK__Media__IdPublica__1AD3FDA4">
+            <End Role="Publication" EntitySet="Publication" />
+            <End Role="Media" EntitySet="Media" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Media__IdStatut__797309D9" Association="Self.FK__Media__IdStatut__797309D9">
+            <End Role="Statut" EntitySet="Statut" />
+            <End Role="Media" EntitySet="Media" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Media__IdTypeBlo__7A672E12" Association="Self.FK__Media__IdTypeBlo__7A672E12">
+            <End Role="TypeBloc" EntitySet="TypeBloc" />
+            <End Role="Media" EntitySet="Media" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Media__IdTypeMed__7B5B524B" Association="Self.FK__Media__IdTypeMed__7B5B524B">
+            <End Role="TypeMedia" EntitySet="TypeMedia" />
+            <End Role="Media" EntitySet="Media" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Message__IdAuteu__7C4F7684" Association="Self.FK__Message__IdAuteu__7C4F7684">
+            <End Role="Utilisateur" EntitySet="Utilisateur" />
+            <End Role="Message" EntitySet="Message" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Message__IdForum__7D439ABD" Association="Self.FK__Message__IdForum__7D439ABD">
+            <End Role="Forum" EntitySet="Forum" />
+            <End Role="Message" EntitySet="Message" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Message__IdStatu__3B40CD36" Association="Self.FK__Message__IdStatu__3B40CD36">
+            <End Role="Statut" EntitySet="Statut" />
+            <End Role="Message" EntitySet="Message" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Messageri__IdAcc__7F2BE32F" Association="Self.FK__Messageri__IdAcc__7F2BE32F">
+            <End Role="Acces" EntitySet="Acces" />
+            <End Role="Messagerie" EntitySet="Messagerie" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Messageri__IdAut__00200768" Association="Self.FK__Messageri__IdAut__00200768">
+            <End Role="Utilisateur" EntitySet="Utilisateur" />
+            <End Role="Messagerie" EntitySet="Messagerie" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Messageri__IdSta__01142BA1" Association="Self.FK__Messageri__IdSta__01142BA1">
+            <End Role="Statut" EntitySet="Statut" />
+            <End Role="Messagerie" EntitySet="Messagerie" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MotClef__IdLangu__02084FDA" Association="Self.FK__MotClef__IdLangu__02084FDA">
+            <End Role="Langue" EntitySet="Langue" />
+            <End Role="MotClef" EntitySet="MotClef" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MotClefCa__IdCat__02FC7413" Association="Self.FK__MotClefCa__IdCat__02FC7413">
+            <End Role="Categorie" EntitySet="Categorie" />
+            <End Role="MotClefCategorie" EntitySet="MotClefCategorie" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MotClefCa__IdMot__03F0984C" Association="Self.FK__MotClefCa__IdMot__03F0984C">
+            <End Role="MotClef" EntitySet="MotClef" />
+            <End Role="MotClefCategorie" EntitySet="MotClefCategorie" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Notificat__IdDes__04E4BC85" Association="Self.FK__Notificat__IdDes__04E4BC85">
+            <End Role="Utilisateur" EntitySet="Utilisateur" />
+            <End Role="Notification" EntitySet="Notification" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Notificat__IdExp__05D8E0BE" Association="Self.FK__Notificat__IdExp__05D8E0BE">
+            <End Role="Utilisateur" EntitySet="Utilisateur" />
+            <End Role="Notification" EntitySet="Notification" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Notificat__IdPie__06CD04F7" Association="Self.FK__Notificat__IdPie__06CD04F7">
+            <End Role="Media" EntitySet="Media" />
+            <End Role="Notification" EntitySet="Notification" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Page__IdAcces__07C12930" Association="Self.FK__Page__IdAcces__07C12930">
+            <End Role="Acces" EntitySet="Acces" />
+            <End Role="Page" EntitySet="Page" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Page__IdAuteur__08B54D69" Association="Self.FK__Page__IdAuteur__08B54D69">
+            <End Role="Utilisateur" EntitySet="Utilisateur" />
+            <End Role="Page" EntitySet="Page" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Page__IdCategori__09A971A2" Association="Self.FK__Page__IdCategori__09A971A2">
+            <End Role="Categorie" EntitySet="Categorie" />
+            <End Role="Page" EntitySet="Page" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Page__IdMaquette__0A9D95DB" Association="Self.FK__Page__IdMaquette__0A9D95DB">
+            <End Role="Media" EntitySet="Media" />
+            <End Role="Page" EntitySet="Page" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Page__IdPublicat__0B91BA14" Association="Self.FK__Page__IdPublicat__0B91BA14">
+            <End Role="Publication" EntitySet="Publication" />
+            <End Role="Page" EntitySet="Page" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Page__IdStatut__0C85DE4D" Association="Self.FK__Page__IdStatut__0C85DE4D">
+            <End Role="Statut" EntitySet="Statut" />
+            <End Role="Page" EntitySet="Page" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Page__IdStyle__0D7A0286" Association="Self.FK__Page__IdStyle__0D7A0286">
+            <End Role="Style" EntitySet="Style" />
+            <End Role="Page" EntitySet="Page" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Publicati__IdAcc__0E6E26BF" Association="Self.FK__Publicati__IdAcc__0E6E26BF">
+            <End Role="Acces" EntitySet="Acces" />
+            <End Role="Publication" EntitySet="Publication" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Publicati__IdAut__0F624AF8" Association="Self.FK__Publicati__IdAut__0F624AF8">
+            <End Role="Utilisateur" EntitySet="Utilisateur" />
+            <End Role="Publication" EntitySet="Publication" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Publicati__IdCat__10566F31" Association="Self.FK__Publicati__IdCat__10566F31">
+            <End Role="Categorie" EntitySet="Categorie" />
+            <End Role="Publication" EntitySet="Publication" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Publicati__IdLan__114A936A" Association="Self.FK__Publicati__IdLan__114A936A">
+            <End Role="Langue" EntitySet="Langue" />
+            <End Role="Publication" EntitySet="Publication" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Publicati__IdSta__123EB7A3" Association="Self.FK__Publicati__IdSta__123EB7A3">
+            <End Role="Statut" EntitySet="Statut" />
+            <End Role="Publication" EntitySet="Publication" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Publicati__IdTyp__1332DBDC" Association="Self.FK__Publicati__IdTyp__1332DBDC">
+            <End Role="TypePublication" EntitySet="TypePublication" />
+            <End Role="Publication" EntitySet="Publication" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Traductio__IdLan__14270015" Association="Self.FK__Traductio__IdLan__14270015">
+            <End Role="Langue" EntitySet="Langue" />
+            <End Role="Traduction" EntitySet="Traduction" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TypeBloc__IdAcce__151B244E" Association="Self.FK__TypeBloc__IdAcce__151B244E">
+            <End Role="Acces" EntitySet="Acces" />
+            <End Role="TypeBloc" EntitySet="TypeBloc" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TypeBloc__IdStat__160F4887" Association="Self.FK__TypeBloc__IdStat__160F4887">
+            <End Role="Statut" EntitySet="Statut" />
+            <End Role="TypeBloc" EntitySet="TypeBloc" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Utilisate__IdAcc__17036CC0" Association="Self.FK__Utilisate__IdAcc__17036CC0">
+            <End Role="Acces" EntitySet="Acces" />
+            <End Role="Utilisateur" EntitySet="Utilisateur" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Utilisate__IdSta__17F790F9" Association="Self.FK__Utilisate__IdSta__17F790F9">
+            <End Role="Statut" EntitySet="Statut" />
+            <End Role="Utilisateur" EntitySet="Utilisateur" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Utilisate__IdTro__18EBB532" Association="Self.FK__Utilisate__IdTro__18EBB532">
+            <End Role="Trophee" EntitySet="Trophee" />
+            <End Role="Utilisateur" EntitySet="Utilisateur" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MasterCodeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Acces">
+          <Key>
+            <PropertyRef Name="IdAcces" />
+          </Key>
+          <Property Name="IdAcces" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="typeAcces" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="niveauAcces" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Categorie" Relationship="Self.FK__Categorie__IdAcc__6E01572D" FromRole="Acces" ToRole="Categorie" />
+          <NavigationProperty Name="Forum" Relationship="Self.FK__Forum__IdAcces__72C60C4A" FromRole="Acces" ToRole="Forum" />
+          <NavigationProperty Name="Media" Relationship="Self.FK__Media__IdAcces__778AC167" FromRole="Acces" ToRole="Media" />
+          <NavigationProperty Name="Messagerie" Relationship="Self.FK__Messageri__IdAcc__7F2BE32F" FromRole="Acces" ToRole="Messagerie" />
+          <NavigationProperty Name="Page" Relationship="Self.FK__Page__IdAcces__07C12930" FromRole="Acces" ToRole="Page" />
+          <NavigationProperty Name="Publication" Relationship="Self.FK__Publicati__IdAcc__0E6E26BF" FromRole="Acces" ToRole="Publication" />
+          <NavigationProperty Name="TypeBloc" Relationship="Self.FK__TypeBloc__IdAcce__151B244E" FromRole="Acces" ToRole="TypeBloc" />
+          <NavigationProperty Name="Utilisateur" Relationship="Self.FK__Utilisate__IdAcc__17036CC0" FromRole="Acces" ToRole="Utilisateur" />
+        </EntityType>
+        <EntityType Name="Bloc">
+          <Key>
+            <PropertyRef Name="IdBloc" />
+          </Key>
+          <Property Name="IdBloc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cheminTemplate" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdTypeBloc" Type="Int32" Nullable="false" />
+          <Property Name="IdReference" Type="Int32" Nullable="false" />
+          <Property Name="IdStyle" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Style" Relationship="Self.FK__Bloc__IdStyle__6C190EBB" FromRole="Bloc" ToRole="Style" />
+          <NavigationProperty Name="TypeBloc" Relationship="Self.FK__Bloc__IdTypeBloc__6D0D32F4" FromRole="Bloc" ToRole="TypeBloc" />
+        </EntityType>
+        <EntityType Name="Categorie">
+          <Key>
+            <PropertyRef Name="IdCategorie" />
+          </Key>
+          <Property Name="IdCategorie" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LibelleCategorie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdCategorieParent" Type="Int32" />
+          <Property Name="IdAcces" Type="Int32" Nullable="false" />
+          <Property Name="IdStatut" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Acces" Relationship="Self.FK__Categorie__IdAcc__6E01572D" FromRole="Categorie" ToRole="Acces" />
+          <NavigationProperty Name="Statut" Relationship="Self.FK__Categorie__IdSta__6EF57B66" FromRole="Categorie" ToRole="Statut" />
+          <NavigationProperty Name="Forum" Relationship="Self.FK__Forum__IdCategor__73BA3083" FromRole="Categorie" ToRole="Forum" />
+          <NavigationProperty Name="MotClefCategorie" Relationship="Self.FK__MotClefCa__IdCat__02FC7413" FromRole="Categorie" ToRole="MotClefCategorie" />
+          <NavigationProperty Name="Page" Relationship="Self.FK__Page__IdCategori__09A971A2" FromRole="Categorie" ToRole="Page" />
+          <NavigationProperty Name="Publication" Relationship="Self.FK__Publicati__IdCat__10566F31" FromRole="Categorie" ToRole="Publication" />
+        </EntityType>
+        <EntityType Name="Commentaire">
+          <Key>
+            <PropertyRef Name="IdCommentaire" />
+          </Key>
+          <Property Name="IdCommentaire" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Texte" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IdPublication" Type="Int32" Nullable="false" />
+          <Property Name="IdAuteur" Type="Int32" Nullable="false" />
+          <Property Name="DateCreation" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdStatut" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Utilisateur" Relationship="Self.FK__Commentai__IdAut__6FE99F9F" FromRole="Commentaire" ToRole="Utilisateur" />
+          <NavigationProperty Name="Publication" Relationship="Self.FK__Commentai__IdPub__70DDC3D8" FromRole="Commentaire" ToRole="Publication" />
+          <NavigationProperty Name="Statut" Relationship="Self.FK__Commentai__IdSta__71D1E811" FromRole="Commentaire" ToRole="Statut" />
+        </EntityType>
+        <EntityType Name="Forum">
+          <Key>
+            <PropertyRef Name="IdForum" />
+          </Key>
+          <Property Name="IdForum" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sujet" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DatePublication" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MotsClefs" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Popularite" Type="Int32" Nullable="false" />
+          <Property Name="IdCategorie" Type="Int32" Nullable="false" />
+          <Property Name="IdStatut" Type="Int32" Nullable="false" />
+          <Property Name="IdAcces" Type="Int32" Nullable="false" />
+          <Property Name="IdLangue" Type="Int32" Nullable="false" />
+          <Property Name="IdAuteur" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Acces" Relationship="Self.FK__Forum__IdAcces__72C60C4A" FromRole="Forum" ToRole="Acces" />
+          <NavigationProperty Name="Categorie" Relationship="Self.FK__Forum__IdCategor__73BA3083" FromRole="Forum" ToRole="Categorie" />
+          <NavigationProperty Name="Utilisateur" Relationship="Self.FK__Forum__IdAuteur__29221CFB" FromRole="Forum" ToRole="Utilisateur" />
+          <NavigationProperty Name="Langue" Relationship="Self.FK__Forum__IdLangue__74AE54BC" FromRole="Forum" ToRole="Langue" />
+          <NavigationProperty Name="Statut" Relationship="Self.FK__Forum__IdStatut__75A278F5" FromRole="Forum" ToRole="Statut" />
+          <NavigationProperty Name="Message" Relationship="Self.FK__Message__IdForum__7D439ABD" FromRole="Forum" ToRole="Message" />
+        </EntityType>
+        <EntityType Name="Langue">
+          <Key>
+            <PropertyRef Name="IdLangue" />
+          </Key>
+          <Property Name="IdLangue" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codeAlpha" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pays" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="cheminIcone" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Forum" Relationship="Self.FK__Forum__IdLangue__74AE54BC" FromRole="Langue" ToRole="Forum" />
+          <NavigationProperty Name="MotClef" Relationship="Self.FK__MotClef__IdLangu__02084FDA" FromRole="Langue" ToRole="MotClef" />
+          <NavigationProperty Name="Publication" Relationship="Self.FK__Publicati__IdLan__114A936A" FromRole="Langue" ToRole="Publication" />
+          <NavigationProperty Name="Traduction" Relationship="Self.FK__Traductio__IdLan__14270015" FromRole="Langue" ToRole="Traduction" />
+        </EntityType>
+        <EntityType Name="Maintenance">
+          <Key>
+            <PropertyRef Name="IdMaintenance" />
+          </Key>
+          <Property Name="IdMaintenance" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ModeMaintenance" Type="Byte" Nullable="false" />
+          <Property Name="DateDebut" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateFinPrevue" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateFinEffective" Type="DateTime" Precision="3" />
+          <Property Name="IdResponsable" Type="Int32" />
+          <NavigationProperty Name="Utilisateur" Relationship="Self.FK__Maintenan__IdRes__76969D2E" FromRole="Maintenance" ToRole="Utilisateur" />
+        </EntityType>
+        <EntityType Name="Media">
+          <Key>
+            <PropertyRef Name="IdMedia" />
+          </Key>
+          <Property Name="IdMedia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Chemin" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="C_Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DatePublication" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdStatut" Type="Int32" Nullable="false" />
+          <Property Name="IdAcces" Type="Int32" Nullable="false" />
+          <Property Name="IdTypeMedia" Type="Int32" Nullable="false" />
+          <Property Name="IdAuteur" Type="Int32" Nullable="false" />
+          <Property Name="IdReference" Type="Int32" />
+          <Property Name="IdTypeBloc" Type="Int32" />
+          <Property Name="IdPublication" Type="Int32" />
+          <NavigationProperty Name="Acces" Relationship="Self.FK__Media__IdAcces__778AC167" FromRole="Media" ToRole="Acces" />
+          <NavigationProperty Name="Utilisateur" Relationship="Self.FK__Media__IdAuteur__787EE5A0" FromRole="Media" ToRole="Utilisateur" />
+          <NavigationProperty Name="Publication" Relationship="Self.FK__Media__IdPublica__1AD3FDA4" FromRole="Media" ToRole="Publication" />
+          <NavigationProperty Name="Statut" Relationship="Self.FK__Media__IdStatut__797309D9" FromRole="Media" ToRole="Statut" />
+          <NavigationProperty Name="TypeBloc" Relationship="Self.FK__Media__IdTypeBlo__7A672E12" FromRole="Media" ToRole="TypeBloc" />
+          <NavigationProperty Name="TypeMedia" Relationship="Self.FK__Media__IdTypeMed__7B5B524B" FromRole="Media" ToRole="TypeMedia" />
+          <NavigationProperty Name="Notification" Relationship="Self.FK__Notificat__IdPie__06CD04F7" FromRole="Media" ToRole="Notification" />
+          <NavigationProperty Name="Page" Relationship="Self.FK__Page__IdMaquette__0A9D95DB" FromRole="Media" ToRole="Page" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="IdMessage" />
+          </Key>
+          <Property Name="IdMessage" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdMessageParent" Type="Int32" />
+          <Property Name="IdForum" Type="Int32" Nullable="false" />
+          <Property Name="Texte" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Popularite" Type="Int32" />
+          <Property Name="IdStatut" Type="Int32" />
+          <Property Name="IdAuteur" Type="Int32" Nullable="false" />
+          <Property Name="DatePublication" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Forum" Relationship="Self.FK__Message__IdForum__7D439ABD" FromRole="Message" ToRole="Forum" />
+          <NavigationProperty Name="Utilisateur" Relationship="Self.FK__Message__IdAuteu__7C4F7684" FromRole="Message" ToRole="Utilisateur" />
+          <NavigationProperty Name="Statut" Relationship="Self.FK__Message__IdStatu__3B40CD36" FromRole="Message" ToRole="Statut" />
+        </EntityType>
+        <EntityType Name="Messagerie">
+          <Key>
+            <PropertyRef Name="IdMessagerie" />
+          </Key>
+          <Property Name="IdMessagerie" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Texte" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DatePublication" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateFin" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdMessagerieParent" Type="Int32" />
+          <Property Name="IdAuteur" Type="Int32" />
+          <Property Name="IdStatut" Type="Int32" Nullable="false" />
+          <Property Name="IdAcces" Type="Int32" />
+          <NavigationProperty Name="Acces" Relationship="Self.FK__Messageri__IdAcc__7F2BE32F" FromRole="Messagerie" ToRole="Acces" />
+          <NavigationProperty Name="Utilisateur" Relationship="Self.FK__Messageri__IdAut__00200768" FromRole="Messagerie" ToRole="Utilisateur" />
+          <NavigationProperty Name="Statut" Relationship="Self.FK__Messageri__IdSta__01142BA1" FromRole="Messagerie" ToRole="Statut" />
+        </EntityType>
+        <EntityType Name="MotClef">
+          <Key>
+            <PropertyRef Name="IdMotClef" />
+          </Key>
+          <Property Name="IdMotClef" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MotCle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdLangue" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Langue" Relationship="Self.FK__MotClef__IdLangu__02084FDA" FromRole="MotClef" ToRole="Langue" />
+          <NavigationProperty Name="MotClefCategorie" Relationship="Self.FK__MotClefCa__IdMot__03F0984C" FromRole="MotClef" ToRole="MotClefCategorie" />
+        </EntityType>
+        <EntityType Name="MotClefCategorie">
+          <Key>
+            <PropertyRef Name="IdMotClefCategorie" />
+          </Key>
+          <Property Name="IdMotClefCategorie" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdMotClef" Type="Int32" Nullable="false" />
+          <Property Name="IdCategorie" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Categorie" Relationship="Self.FK__MotClefCa__IdCat__02FC7413" FromRole="MotClefCategorie" ToRole="Categorie" />
+          <NavigationProperty Name="MotClef" Relationship="Self.FK__MotClefCa__IdMot__03F0984C" FromRole="MotClefCategorie" ToRole="MotClef" />
+        </EntityType>
+        <EntityType Name="Notification">
+          <Key>
+            <PropertyRef Name="IdNotification" />
+          </Key>
+          <Property Name="IdNotification" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Objet" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Texte" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdExpediteur" Type="Int32" Nullable="false" />
+          <Property Name="IdDestinataire" Type="Int32" Nullable="false" />
+          <Property Name="IdPieceJointe" Type="Int32" />
+          <NavigationProperty Name="Media" Relationship="Self.FK__Notificat__IdPie__06CD04F7" FromRole="Notification" ToRole="Media" />
+          <NavigationProperty Name="Utilisateur" Relationship="Self.FK__Notificat__IdDes__04E4BC85" FromRole="Notification" ToRole="Utilisateur" />
+          <NavigationProperty Name="Utilisateur1" Relationship="Self.FK__Notificat__IdExp__05D8E0BE" FromRole="Notification" ToRole="Utilisateur" />
+        </EntityType>
+        <EntityType Name="Page">
+          <Key>
+            <PropertyRef Name="IdPage" />
+          </Key>
+          <Property Name="IdPage" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="typePage" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Blocs" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DatePublication" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateModification" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdPublication" Type="Int32" />
+          <Property Name="IdAuteur" Type="Int32" Nullable="false" />
+          <Property Name="IdMaquette" Type="Int32" Nullable="false" />
+          <Property Name="IdCategorie" Type="Int32" Nullable="false" />
+          <Property Name="IdAcces" Type="Int32" Nullable="false" />
+          <Property Name="IdStatut" Type="Int32" Nullable="false" />
+          <Property Name="IdStyle" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Acces" Relationship="Self.FK__Page__IdAcces__07C12930" FromRole="Page" ToRole="Acces" />
+          <NavigationProperty Name="Categorie" Relationship="Self.FK__Page__IdCategori__09A971A2" FromRole="Page" ToRole="Categorie" />
+          <NavigationProperty Name="Media" Relationship="Self.FK__Page__IdMaquette__0A9D95DB" FromRole="Page" ToRole="Media" />
+          <NavigationProperty Name="Utilisateur" Relationship="Self.FK__Page__IdAuteur__08B54D69" FromRole="Page" ToRole="Utilisateur" />
+          <NavigationProperty Name="Publication" Relationship="Self.FK__Page__IdPublicat__0B91BA14" FromRole="Page" ToRole="Publication" />
+          <NavigationProperty Name="Statut" Relationship="Self.FK__Page__IdStatut__0C85DE4D" FromRole="Page" ToRole="Statut" />
+          <NavigationProperty Name="Style" Relationship="Self.FK__Page__IdStyle__0D7A0286" FromRole="Page" ToRole="Style" />
+        </EntityType>
+        <EntityType Name="Priorite">
+          <Key>
+            <PropertyRef Name="IdPriorite" />
+          </Key>
+          <Property Name="IdPriorite" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="typePriorite" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Publication">
+          <Key>
+            <PropertyRef Name="IdPublication" />
+          </Key>
+          <Property Name="IdPublication" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Resume" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Texte" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Champ1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Champ2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Champ3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Champ4" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DatePublication" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateModification" Type="DateTime" Precision="3" />
+          <Property Name="Popularite" Type="Int32" Nullable="false" />
+          <Property Name="MotsClefs" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IdAuteur" Type="Int32" />
+          <Property Name="IdPublicationParent" Type="Int32" />
+          <Property Name="IdTypePublication" Type="Int32" />
+          <Property Name="IdCategorie" Type="Int32" />
+          <Property Name="IdAcces" Type="Int32" />
+          <Property Name="IdStatut" Type="Int32" Nullable="false" />
+          <Property Name="IdLangue" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Acces" Relationship="Self.FK__Publicati__IdAcc__0E6E26BF" FromRole="Publication" ToRole="Acces" />
+          <NavigationProperty Name="Categorie" Relationship="Self.FK__Publicati__IdCat__10566F31" FromRole="Publication" ToRole="Categorie" />
+          <NavigationProperty Name="Commentaire" Relationship="Self.FK__Commentai__IdPub__70DDC3D8" FromRole="Publication" ToRole="Commentaire" />
+          <NavigationProperty Name="Langue" Relationship="Self.FK__Publicati__IdLan__114A936A" FromRole="Publication" ToRole="Langue" />
+          <NavigationProperty Name="Media" Relationship="Self.FK__Media__IdPublica__1AD3FDA4" FromRole="Publication" ToRole="Media" />
+          <NavigationProperty Name="Page" Relationship="Self.FK__Page__IdPublicat__0B91BA14" FromRole="Publication" ToRole="Page" />
+          <NavigationProperty Name="Utilisateur" Relationship="Self.FK__Publicati__IdAut__0F624AF8" FromRole="Publication" ToRole="Utilisateur" />
+          <NavigationProperty Name="Statut" Relationship="Self.FK__Publicati__IdSta__123EB7A3" FromRole="Publication" ToRole="Statut" />
+          <NavigationProperty Name="TypePublication" Relationship="Self.FK__Publicati__IdTyp__1332DBDC" FromRole="Publication" ToRole="TypePublication" />
+        </EntityType>
+        <EntityType Name="Publicite">
+          <Key>
+            <PropertyRef Name="IdPublicite" />
+          </Key>
+          <Property Name="IdPublicite" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Regie" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NbreClics" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Recherche">
+          <Key>
+            <PropertyRef Name="IdRecherche" />
+          </Key>
+          <Property Name="IdRecherche" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Demande" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Resultat" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NbreDemande" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Statut">
+          <Key>
+            <PropertyRef Name="IdStatut" />
+          </Key>
+          <Property Name="IdStatut" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="typeStatut" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Categorie" Relationship="Self.FK__Categorie__IdSta__6EF57B66" FromRole="Statut" ToRole="Categorie" />
+          <NavigationProperty Name="Commentaire" Relationship="Self.FK__Commentai__IdSta__71D1E811" FromRole="Statut" ToRole="Commentaire" />
+          <NavigationProperty Name="Forum" Relationship="Self.FK__Forum__IdStatut__75A278F5" FromRole="Statut" ToRole="Forum" />
+          <NavigationProperty Name="Media" Relationship="Self.FK__Media__IdStatut__797309D9" FromRole="Statut" ToRole="Media" />
+          <NavigationProperty Name="Message" Relationship="Self.FK__Message__IdStatu__3B40CD36" FromRole="Statut" ToRole="Message" />
+          <NavigationProperty Name="Messagerie" Relationship="Self.FK__Messageri__IdSta__01142BA1" FromRole="Statut" ToRole="Messagerie" />
+          <NavigationProperty Name="Page" Relationship="Self.FK__Page__IdStatut__0C85DE4D" FromRole="Statut" ToRole="Page" />
+          <NavigationProperty Name="Publication" Relationship="Self.FK__Publicati__IdSta__123EB7A3" FromRole="Statut" ToRole="Publication" />
+          <NavigationProperty Name="TypeBloc" Relationship="Self.FK__TypeBloc__IdStat__160F4887" FromRole="Statut" ToRole="TypeBloc" />
+          <NavigationProperty Name="Utilisateur" Relationship="Self.FK__Utilisate__IdSta__17F790F9" FromRole="Statut" ToRole="Utilisateur" />
+        </EntityType>
+        <EntityType Name="Style">
+          <Key>
+            <PropertyRef Name="IdStyle" />
+          </Key>
+          <Property Name="IdStyle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cheminStyle" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="feuilleStyle" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Bloc" Relationship="Self.FK__Bloc__IdStyle__6C190EBB" FromRole="Style" ToRole="Bloc" />
+          <NavigationProperty Name="Page" Relationship="Self.FK__Page__IdStyle__0D7A0286" FromRole="Style" ToRole="Page" />
+        </EntityType>
+        <EntityType Name="Traduction">
+          <Key>
+            <PropertyRef Name="IdTraduction" />
+          </Key>
+          <Property Name="IdTraduction" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DefaultTexte" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TraductionTexte" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdLangue" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Langue" Relationship="Self.FK__Traductio__IdLan__14270015" FromRole="Traduction" ToRole="Langue" />
+        </EntityType>
+        <EntityType Name="Trophee">
+          <Key>
+            <PropertyRef Name="IdTrophee" />
+          </Key>
+          <Property Name="IdTrophee" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="typeTrophee" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cheminIcone" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Seuil" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Utilisateur" Relationship="Self.FK__Utilisate__IdTro__18EBB532" FromRole="Trophee" ToRole="Utilisateur" />
+        </EntityType>
+        <EntityType Name="TypeBloc">
+          <Key>
+            <PropertyRef Name="IdTypeBloc" />
+          </Key>
+          <Property Name="IdTypeBloc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NomBloc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdAcces" Type="Int32" Nullable="false" />
+          <Property Name="IdStatut" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Acces" Relationship="Self.FK__TypeBloc__IdAcce__151B244E" FromRole="TypeBloc" ToRole="Acces" />
+          <NavigationProperty Name="Bloc" Relationship="Self.FK__Bloc__IdTypeBloc__6D0D32F4" FromRole="TypeBloc" ToRole="Bloc" />
+          <NavigationProperty Name="Media" Relationship="Self.FK__Media__IdTypeBlo__7A672E12" FromRole="TypeBloc" ToRole="Media" />
+          <NavigationProperty Name="Statut" Relationship="Self.FK__TypeBloc__IdStat__160F4887" FromRole="TypeBloc" ToRole="Statut" />
+        </EntityType>
+        <EntityType Name="TypeMedia">
+          <Key>
+            <PropertyRef Name="IdTypeMedia" />
+          </Key>
+          <Property Name="IdTypeMedia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Media" Relationship="Self.FK__Media__IdTypeMed__7B5B524B" FromRole="TypeMedia" ToRole="Media" />
+        </EntityType>
+        <EntityType Name="TypePublication">
+          <Key>
+            <PropertyRef Name="IdTypePublication" />
+          </Key>
+          <Property Name="IdTypePublication" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Publication" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Publication1" Relationship="Self.FK__Publicati__IdTyp__1332DBDC" FromRole="TypePublication" ToRole="Publication" />
+        </EntityType>
+        <EntityType Name="Utilisateur">
+          <Key>
+            <PropertyRef Name="IdUtilisateur" />
+          </Key>
+          <Property Name="IdUtilisateur" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Pseudo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MotdePasse" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MotsClefs" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IdStatut" Type="Int32" Nullable="false" />
+          <Property Name="IdAcces" Type="Int32" Nullable="false" />
+          <Property Name="IdLangue" Type="Int32" />
+          <Property Name="IdTrophee" Type="Int32" />
+          <Property Name="DateCreation" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Popularite" Type="Int32" Nullable="false" />
+          <Property Name="CheminAvatar" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Acces" Relationship="Self.FK__Utilisate__IdAcc__17036CC0" FromRole="Utilisateur" ToRole="Acces" />
+          <NavigationProperty Name="Commentaire" Relationship="Self.FK__Commentai__IdAut__6FE99F9F" FromRole="Utilisateur" ToRole="Commentaire" />
+          <NavigationProperty Name="Forum" Relationship="Self.FK__Forum__IdAuteur__29221CFB" FromRole="Utilisateur" ToRole="Forum" />
+          <NavigationProperty Name="Maintenance" Relationship="Self.FK__Maintenan__IdRes__76969D2E" FromRole="Utilisateur" ToRole="Maintenance" />
+          <NavigationProperty Name="Media" Relationship="Self.FK__Media__IdAuteur__787EE5A0" FromRole="Utilisateur" ToRole="Media" />
+          <NavigationProperty Name="Message" Relationship="Self.FK__Message__IdAuteu__7C4F7684" FromRole="Utilisateur" ToRole="Message" />
+          <NavigationProperty Name="Messagerie" Relationship="Self.FK__Messageri__IdAut__00200768" FromRole="Utilisateur" ToRole="Messagerie" />
+          <NavigationProperty Name="Notification" Relationship="Self.FK__Notificat__IdDes__04E4BC85" FromRole="Utilisateur" ToRole="Notification" />
+          <NavigationProperty Name="Notification1" Relationship="Self.FK__Notificat__IdExp__05D8E0BE" FromRole="Utilisateur" ToRole="Notification" />
+          <NavigationProperty Name="Page" Relationship="Self.FK__Page__IdAuteur__08B54D69" FromRole="Utilisateur" ToRole="Page" />
+          <NavigationProperty Name="Publication" Relationship="Self.FK__Publicati__IdAut__0F624AF8" FromRole="Utilisateur" ToRole="Publication" />
+          <NavigationProperty Name="Statut" Relationship="Self.FK__Utilisate__IdSta__17F790F9" FromRole="Utilisateur" ToRole="Statut" />
+          <NavigationProperty Name="Trophee" Relationship="Self.FK__Utilisate__IdTro__18EBB532" FromRole="Utilisateur" ToRole="Trophee" />
+        </EntityType>
+        <Association Name="FK__Categorie__IdAcc__6E01572D">
+          <End Role="Acces" Type="Self.Acces" Multiplicity="1" />
+          <End Role="Categorie" Type="Self.Categorie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Acces">
+              <PropertyRef Name="IdAcces" />
+            </Principal>
+            <Dependent Role="Categorie">
+              <PropertyRef Name="IdAcces" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Forum__IdAcces__72C60C4A">
+          <End Role="Acces" Type="Self.Acces" Multiplicity="1" />
+          <End Role="Forum" Type="Self.Forum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Acces">
+              <PropertyRef Name="IdAcces" />
+            </Principal>
+            <Dependent Role="Forum">
+              <PropertyRef Name="IdAcces" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Media__IdAcces__778AC167">
+          <End Role="Acces" Type="Self.Acces" Multiplicity="1" />
+          <End Role="Media" Type="Self.Media" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Acces">
+              <PropertyRef Name="IdAcces" />
+            </Principal>
+            <Dependent Role="Media">
+              <PropertyRef Name="IdAcces" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Messageri__IdAcc__7F2BE32F">
+          <End Role="Acces" Type="Self.Acces" Multiplicity="0..1" />
+          <End Role="Messagerie" Type="Self.Messagerie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Acces">
+              <PropertyRef Name="IdAcces" />
+            </Principal>
+            <Dependent Role="Messagerie">
+              <PropertyRef Name="IdAcces" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Page__IdAcces__07C12930">
+          <End Role="Acces" Type="Self.Acces" Multiplicity="1" />
+          <End Role="Page" Type="Self.Page" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Acces">
+              <PropertyRef Name="IdAcces" />
+            </Principal>
+            <Dependent Role="Page">
+              <PropertyRef Name="IdAcces" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Publicati__IdAcc__0E6E26BF">
+          <End Role="Acces" Type="Self.Acces" Multiplicity="0..1" />
+          <End Role="Publication" Type="Self.Publication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Acces">
+              <PropertyRef Name="IdAcces" />
+            </Principal>
+            <Dependent Role="Publication">
+              <PropertyRef Name="IdAcces" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TypeBloc__IdAcce__151B244E">
+          <End Role="Acces" Type="Self.Acces" Multiplicity="1" />
+          <End Role="TypeBloc" Type="Self.TypeBloc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Acces">
+              <PropertyRef Name="IdAcces" />
+            </Principal>
+            <Dependent Role="TypeBloc">
+              <PropertyRef Name="IdAcces" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Utilisate__IdAcc__17036CC0">
+          <End Role="Acces" Type="Self.Acces" Multiplicity="1" />
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Acces">
+              <PropertyRef Name="IdAcces" />
+            </Principal>
+            <Dependent Role="Utilisateur">
+              <PropertyRef Name="IdAcces" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Bloc__IdStyle__6C190EBB">
+          <End Role="Style" Type="Self.Style" Multiplicity="1" />
+          <End Role="Bloc" Type="Self.Bloc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Style">
+              <PropertyRef Name="IdStyle" />
+            </Principal>
+            <Dependent Role="Bloc">
+              <PropertyRef Name="IdStyle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Bloc__IdTypeBloc__6D0D32F4">
+          <End Role="TypeBloc" Type="Self.TypeBloc" Multiplicity="1" />
+          <End Role="Bloc" Type="Self.Bloc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeBloc">
+              <PropertyRef Name="IdTypeBloc" />
+            </Principal>
+            <Dependent Role="Bloc">
+              <PropertyRef Name="IdTypeBloc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Categorie__IdSta__6EF57B66">
+          <End Role="Statut" Type="Self.Statut" Multiplicity="1" />
+          <End Role="Categorie" Type="Self.Categorie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statut">
+              <PropertyRef Name="IdStatut" />
+            </Principal>
+            <Dependent Role="Categorie">
+              <PropertyRef Name="IdStatut" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Forum__IdCategor__73BA3083">
+          <End Role="Categorie" Type="Self.Categorie" Multiplicity="1" />
+          <End Role="Forum" Type="Self.Forum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorie">
+              <PropertyRef Name="IdCategorie" />
+            </Principal>
+            <Dependent Role="Forum">
+              <PropertyRef Name="IdCategorie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MotClefCa__IdCat__02FC7413">
+          <End Role="Categorie" Type="Self.Categorie" Multiplicity="1" />
+          <End Role="MotClefCategorie" Type="Self.MotClefCategorie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorie">
+              <PropertyRef Name="IdCategorie" />
+            </Principal>
+            <Dependent Role="MotClefCategorie">
+              <PropertyRef Name="IdCategorie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Page__IdCategori__09A971A2">
+          <End Role="Categorie" Type="Self.Categorie" Multiplicity="1" />
+          <End Role="Page" Type="Self.Page" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorie">
+              <PropertyRef Name="IdCategorie" />
+            </Principal>
+            <Dependent Role="Page">
+              <PropertyRef Name="IdCategorie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Publicati__IdCat__10566F31">
+          <End Role="Categorie" Type="Self.Categorie" Multiplicity="0..1" />
+          <End Role="Publication" Type="Self.Publication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorie">
+              <PropertyRef Name="IdCategorie" />
+            </Principal>
+            <Dependent Role="Publication">
+              <PropertyRef Name="IdCategorie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Commentai__IdAut__6FE99F9F">
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1" />
+          <End Role="Commentaire" Type="Self.Commentaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilisateur">
+              <PropertyRef Name="IdUtilisateur" />
+            </Principal>
+            <Dependent Role="Commentaire">
+              <PropertyRef Name="IdAuteur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Commentai__IdPub__70DDC3D8">
+          <End Role="Publication" Type="Self.Publication" Multiplicity="1" />
+          <End Role="Commentaire" Type="Self.Commentaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Publication">
+              <PropertyRef Name="IdPublication" />
+            </Principal>
+            <Dependent Role="Commentaire">
+              <PropertyRef Name="IdPublication" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Commentai__IdSta__71D1E811">
+          <End Role="Statut" Type="Self.Statut" Multiplicity="1" />
+          <End Role="Commentaire" Type="Self.Commentaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statut">
+              <PropertyRef Name="IdStatut" />
+            </Principal>
+            <Dependent Role="Commentaire">
+              <PropertyRef Name="IdStatut" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Forum__IdAuteur__29221CFB">
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1" />
+          <End Role="Forum" Type="Self.Forum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilisateur">
+              <PropertyRef Name="IdUtilisateur" />
+            </Principal>
+            <Dependent Role="Forum">
+              <PropertyRef Name="IdAuteur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Forum__IdLangue__74AE54BC">
+          <End Role="Langue" Type="Self.Langue" Multiplicity="1" />
+          <End Role="Forum" Type="Self.Forum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Langue">
+              <PropertyRef Name="IdLangue" />
+            </Principal>
+            <Dependent Role="Forum">
+              <PropertyRef Name="IdLangue" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Forum__IdStatut__75A278F5">
+          <End Role="Statut" Type="Self.Statut" Multiplicity="1" />
+          <End Role="Forum" Type="Self.Forum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statut">
+              <PropertyRef Name="IdStatut" />
+            </Principal>
+            <Dependent Role="Forum">
+              <PropertyRef Name="IdStatut" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Message__IdForum__7D439ABD">
+          <End Role="Forum" Type="Self.Forum" Multiplicity="1" />
+          <End Role="Message" Type="Self.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Forum">
+              <PropertyRef Name="IdForum" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="IdForum" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MotClef__IdLangu__02084FDA">
+          <End Role="Langue" Type="Self.Langue" Multiplicity="1" />
+          <End Role="MotClef" Type="Self.MotClef" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Langue">
+              <PropertyRef Name="IdLangue" />
+            </Principal>
+            <Dependent Role="MotClef">
+              <PropertyRef Name="IdLangue" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Publicati__IdLan__114A936A">
+          <End Role="Langue" Type="Self.Langue" Multiplicity="1" />
+          <End Role="Publication" Type="Self.Publication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Langue">
+              <PropertyRef Name="IdLangue" />
+            </Principal>
+            <Dependent Role="Publication">
+              <PropertyRef Name="IdLangue" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Traductio__IdLan__14270015">
+          <End Role="Langue" Type="Self.Langue" Multiplicity="1" />
+          <End Role="Traduction" Type="Self.Traduction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Langue">
+              <PropertyRef Name="IdLangue" />
+            </Principal>
+            <Dependent Role="Traduction">
+              <PropertyRef Name="IdLangue" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Maintenan__IdRes__76969D2E">
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="0..1" />
+          <End Role="Maintenance" Type="Self.Maintenance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilisateur">
+              <PropertyRef Name="IdUtilisateur" />
+            </Principal>
+            <Dependent Role="Maintenance">
+              <PropertyRef Name="IdResponsable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Media__IdAuteur__787EE5A0">
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1" />
+          <End Role="Media" Type="Self.Media" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilisateur">
+              <PropertyRef Name="IdUtilisateur" />
+            </Principal>
+            <Dependent Role="Media">
+              <PropertyRef Name="IdAuteur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Media__IdPublica__1AD3FDA4">
+          <End Role="Publication" Type="Self.Publication" Multiplicity="0..1" />
+          <End Role="Media" Type="Self.Media" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Publication">
+              <PropertyRef Name="IdPublication" />
+            </Principal>
+            <Dependent Role="Media">
+              <PropertyRef Name="IdPublication" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Media__IdStatut__797309D9">
+          <End Role="Statut" Type="Self.Statut" Multiplicity="1" />
+          <End Role="Media" Type="Self.Media" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statut">
+              <PropertyRef Name="IdStatut" />
+            </Principal>
+            <Dependent Role="Media">
+              <PropertyRef Name="IdStatut" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Media__IdTypeBlo__7A672E12">
+          <End Role="TypeBloc" Type="Self.TypeBloc" Multiplicity="0..1" />
+          <End Role="Media" Type="Self.Media" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeBloc">
+              <PropertyRef Name="IdTypeBloc" />
+            </Principal>
+            <Dependent Role="Media">
+              <PropertyRef Name="IdTypeBloc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Media__IdTypeMed__7B5B524B">
+          <End Role="TypeMedia" Type="Self.TypeMedia" Multiplicity="1" />
+          <End Role="Media" Type="Self.Media" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeMedia">
+              <PropertyRef Name="IdTypeMedia" />
+            </Principal>
+            <Dependent Role="Media">
+              <PropertyRef Name="IdTypeMedia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Notificat__IdPie__06CD04F7">
+          <End Role="Media" Type="Self.Media" Multiplicity="0..1" />
+          <End Role="Notification" Type="Self.Notification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Media">
+              <PropertyRef Name="IdMedia" />
+            </Principal>
+            <Dependent Role="Notification">
+              <PropertyRef Name="IdPieceJointe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Page__IdMaquette__0A9D95DB">
+          <End Role="Media" Type="Self.Media" Multiplicity="1" />
+          <End Role="Page" Type="Self.Page" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Media">
+              <PropertyRef Name="IdMedia" />
+            </Principal>
+            <Dependent Role="Page">
+              <PropertyRef Name="IdMaquette" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Message__IdAuteu__7C4F7684">
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1" />
+          <End Role="Message" Type="Self.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilisateur">
+              <PropertyRef Name="IdUtilisateur" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="IdAuteur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Message__IdStatu__3B40CD36">
+          <End Role="Statut" Type="Self.Statut" Multiplicity="0..1" />
+          <End Role="Message" Type="Self.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statut">
+              <PropertyRef Name="IdStatut" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="IdStatut" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Messageri__IdAut__00200768">
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="0..1" />
+          <End Role="Messagerie" Type="Self.Messagerie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilisateur">
+              <PropertyRef Name="IdUtilisateur" />
+            </Principal>
+            <Dependent Role="Messagerie">
+              <PropertyRef Name="IdAuteur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Messageri__IdSta__01142BA1">
+          <End Role="Statut" Type="Self.Statut" Multiplicity="1" />
+          <End Role="Messagerie" Type="Self.Messagerie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statut">
+              <PropertyRef Name="IdStatut" />
+            </Principal>
+            <Dependent Role="Messagerie">
+              <PropertyRef Name="IdStatut" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MotClefCa__IdMot__03F0984C">
+          <End Role="MotClef" Type="Self.MotClef" Multiplicity="1" />
+          <End Role="MotClefCategorie" Type="Self.MotClefCategorie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MotClef">
+              <PropertyRef Name="IdMotClef" />
+            </Principal>
+            <Dependent Role="MotClefCategorie">
+              <PropertyRef Name="IdMotClef" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Notificat__IdDes__04E4BC85">
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1" />
+          <End Role="Notification" Type="Self.Notification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilisateur">
+              <PropertyRef Name="IdUtilisateur" />
+            </Principal>
+            <Dependent Role="Notification">
+              <PropertyRef Name="IdDestinataire" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Notificat__IdExp__05D8E0BE">
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1" />
+          <End Role="Notification" Type="Self.Notification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilisateur">
+              <PropertyRef Name="IdUtilisateur" />
+            </Principal>
+            <Dependent Role="Notification">
+              <PropertyRef Name="IdExpediteur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Page__IdAuteur__08B54D69">
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1" />
+          <End Role="Page" Type="Self.Page" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilisateur">
+              <PropertyRef Name="IdUtilisateur" />
+            </Principal>
+            <Dependent Role="Page">
+              <PropertyRef Name="IdAuteur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Page__IdPublicat__0B91BA14">
+          <End Role="Publication" Type="Self.Publication" Multiplicity="0..1" />
+          <End Role="Page" Type="Self.Page" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Publication">
+              <PropertyRef Name="IdPublication" />
+            </Principal>
+            <Dependent Role="Page">
+              <PropertyRef Name="IdPublication" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Page__IdStatut__0C85DE4D">
+          <End Role="Statut" Type="Self.Statut" Multiplicity="1" />
+          <End Role="Page" Type="Self.Page" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statut">
+              <PropertyRef Name="IdStatut" />
+            </Principal>
+            <Dependent Role="Page">
+              <PropertyRef Name="IdStatut" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Page__IdStyle__0D7A0286">
+          <End Role="Style" Type="Self.Style" Multiplicity="1" />
+          <End Role="Page" Type="Self.Page" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Style">
+              <PropertyRef Name="IdStyle" />
+            </Principal>
+            <Dependent Role="Page">
+              <PropertyRef Name="IdStyle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Publicati__IdAut__0F624AF8">
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="0..1" />
+          <End Role="Publication" Type="Self.Publication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilisateur">
+              <PropertyRef Name="IdUtilisateur" />
+            </Principal>
+            <Dependent Role="Publication">
+              <PropertyRef Name="IdAuteur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Publicati__IdSta__123EB7A3">
+          <End Role="Statut" Type="Self.Statut" Multiplicity="1" />
+          <End Role="Publication" Type="Self.Publication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statut">
+              <PropertyRef Name="IdStatut" />
+            </Principal>
+            <Dependent Role="Publication">
+              <PropertyRef Name="IdStatut" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Publicati__IdTyp__1332DBDC">
+          <End Role="TypePublication" Type="Self.TypePublication" Multiplicity="0..1" />
+          <End Role="Publication" Type="Self.Publication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypePublication">
+              <PropertyRef Name="IdTypePublication" />
+            </Principal>
+            <Dependent Role="Publication">
+              <PropertyRef Name="IdTypePublication" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TypeBloc__IdStat__160F4887">
+          <End Role="Statut" Type="Self.Statut" Multiplicity="1" />
+          <End Role="TypeBloc" Type="Self.TypeBloc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statut">
+              <PropertyRef Name="IdStatut" />
+            </Principal>
+            <Dependent Role="TypeBloc">
+              <PropertyRef Name="IdStatut" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Utilisate__IdSta__17F790F9">
+          <End Role="Statut" Type="Self.Statut" Multiplicity="1" />
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statut">
+              <PropertyRef Name="IdStatut" />
+            </Principal>
+            <Dependent Role="Utilisateur">
+              <PropertyRef Name="IdStatut" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Utilisate__IdTro__18EBB532">
+          <End Role="Trophee" Type="Self.Trophee" Multiplicity="0..1" />
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trophee">
+              <PropertyRef Name="IdTrophee" />
+            </Principal>
+            <Dependent Role="Utilisateur">
+              <PropertyRef Name="IdTrophee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MasterCodeEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Acces" EntityType="Self.Acces" />
+          <EntitySet Name="Bloc" EntityType="Self.Bloc" />
+          <EntitySet Name="Categorie" EntityType="Self.Categorie" />
+          <EntitySet Name="Commentaire" EntityType="Self.Commentaire" />
+          <EntitySet Name="Forum" EntityType="Self.Forum" />
+          <EntitySet Name="Langue" EntityType="Self.Langue" />
+          <EntitySet Name="Maintenance" EntityType="Self.Maintenance" />
+          <EntitySet Name="Media" EntityType="Self.Media" />
+          <EntitySet Name="Message" EntityType="Self.Message" />
+          <EntitySet Name="Messagerie" EntityType="Self.Messagerie" />
+          <EntitySet Name="MotClef" EntityType="Self.MotClef" />
+          <EntitySet Name="MotClefCategorie" EntityType="Self.MotClefCategorie" />
+          <EntitySet Name="Notification" EntityType="Self.Notification" />
+          <EntitySet Name="Page" EntityType="Self.Page" />
+          <EntitySet Name="Priorite" EntityType="Self.Priorite" />
+          <EntitySet Name="Publication" EntityType="Self.Publication" />
+          <EntitySet Name="Publicite" EntityType="Self.Publicite" />
+          <EntitySet Name="Recherche" EntityType="Self.Recherche" />
+          <EntitySet Name="Statut" EntityType="Self.Statut" />
+          <EntitySet Name="Style" EntityType="Self.Style" />
+          <EntitySet Name="Traduction" EntityType="Self.Traduction" />
+          <EntitySet Name="Trophee" EntityType="Self.Trophee" />
+          <EntitySet Name="TypeBloc" EntityType="Self.TypeBloc" />
+          <EntitySet Name="TypeMedia" EntityType="Self.TypeMedia" />
+          <EntitySet Name="TypePublication" EntityType="Self.TypePublication" />
+          <EntitySet Name="Utilisateur" EntityType="Self.Utilisateur" />
+          <AssociationSet Name="FK__Categorie__IdAcc__6E01572D" Association="Self.FK__Categorie__IdAcc__6E01572D">
+            <End Role="Acces" EntitySet="Acces" />
+            <End Role="Categorie" EntitySet="Categorie" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Forum__IdAcces__72C60C4A" Association="Self.FK__Forum__IdAcces__72C60C4A">
+            <End Role="Acces" EntitySet="Acces" />
+            <End Role="Forum" EntitySet="Forum" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Media__IdAcces__778AC167" Association="Self.FK__Media__IdAcces__778AC167">
+            <End Role="Acces" EntitySet="Acces" />
+            <End Role="Media" EntitySet="Media" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Messageri__IdAcc__7F2BE32F" Association="Self.FK__Messageri__IdAcc__7F2BE32F">
+            <End Role="Acces" EntitySet="Acces" />
+            <End Role="Messagerie" EntitySet="Messagerie" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Page__IdAcces__07C12930" Association="Self.FK__Page__IdAcces__07C12930">
+            <End Role="Acces" EntitySet="Acces" />
+            <End Role="Page" EntitySet="Page" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Publicati__IdAcc__0E6E26BF" Association="Self.FK__Publicati__IdAcc__0E6E26BF">
+            <End Role="Acces" EntitySet="Acces" />
+            <End Role="Publication" EntitySet="Publication" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TypeBloc__IdAcce__151B244E" Association="Self.FK__TypeBloc__IdAcce__151B244E">
+            <End Role="Acces" EntitySet="Acces" />
+            <End Role="TypeBloc" EntitySet="TypeBloc" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Utilisate__IdAcc__17036CC0" Association="Self.FK__Utilisate__IdAcc__17036CC0">
+            <End Role="Acces" EntitySet="Acces" />
+            <End Role="Utilisateur" EntitySet="Utilisateur" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Bloc__IdStyle__6C190EBB" Association="Self.FK__Bloc__IdStyle__6C190EBB">
+            <End Role="Style" EntitySet="Style" />
+            <End Role="Bloc" EntitySet="Bloc" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Bloc__IdTypeBloc__6D0D32F4" Association="Self.FK__Bloc__IdTypeBloc__6D0D32F4">
+            <End Role="TypeBloc" EntitySet="TypeBloc" />
+            <End Role="Bloc" EntitySet="Bloc" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Categorie__IdSta__6EF57B66" Association="Self.FK__Categorie__IdSta__6EF57B66">
+            <End Role="Statut" EntitySet="Statut" />
+            <End Role="Categorie" EntitySet="Categorie" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Forum__IdCategor__73BA3083" Association="Self.FK__Forum__IdCategor__73BA3083">
+            <End Role="Categorie" EntitySet="Categorie" />
+            <End Role="Forum" EntitySet="Forum" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MotClefCa__IdCat__02FC7413" Association="Self.FK__MotClefCa__IdCat__02FC7413">
+            <End Role="Categorie" EntitySet="Categorie" />
+            <End Role="MotClefCategorie" EntitySet="MotClefCategorie" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Page__IdCategori__09A971A2" Association="Self.FK__Page__IdCategori__09A971A2">
+            <End Role="Categorie" EntitySet="Categorie" />
+            <End Role="Page" EntitySet="Page" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Publicati__IdCat__10566F31" Association="Self.FK__Publicati__IdCat__10566F31">
+            <End Role="Categorie" EntitySet="Categorie" />
+            <End Role="Publication" EntitySet="Publication" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Commentai__IdAut__6FE99F9F" Association="Self.FK__Commentai__IdAut__6FE99F9F">
+            <End Role="Utilisateur" EntitySet="Utilisateur" />
+            <End Role="Commentaire" EntitySet="Commentaire" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Commentai__IdPub__70DDC3D8" Association="Self.FK__Commentai__IdPub__70DDC3D8">
+            <End Role="Publication" EntitySet="Publication" />
+            <End Role="Commentaire" EntitySet="Commentaire" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Commentai__IdSta__71D1E811" Association="Self.FK__Commentai__IdSta__71D1E811">
+            <End Role="Statut" EntitySet="Statut" />
+            <End Role="Commentaire" EntitySet="Commentaire" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Forum__IdAuteur__29221CFB" Association="Self.FK__Forum__IdAuteur__29221CFB">
+            <End Role="Utilisateur" EntitySet="Utilisateur" />
+            <End Role="Forum" EntitySet="Forum" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Forum__IdLangue__74AE54BC" Association="Self.FK__Forum__IdLangue__74AE54BC">
+            <End Role="Langue" EntitySet="Langue" />
+            <End Role="Forum" EntitySet="Forum" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Forum__IdStatut__75A278F5" Association="Self.FK__Forum__IdStatut__75A278F5">
+            <End Role="Statut" EntitySet="Statut" />
+            <End Role="Forum" EntitySet="Forum" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Message__IdForum__7D439ABD" Association="Self.FK__Message__IdForum__7D439ABD">
+            <End Role="Forum" EntitySet="Forum" />
+            <End Role="Message" EntitySet="Message" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MotClef__IdLangu__02084FDA" Association="Self.FK__MotClef__IdLangu__02084FDA">
+            <End Role="Langue" EntitySet="Langue" />
+            <End Role="MotClef" EntitySet="MotClef" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Publicati__IdLan__114A936A" Association="Self.FK__Publicati__IdLan__114A936A">
+            <End Role="Langue" EntitySet="Langue" />
+            <End Role="Publication" EntitySet="Publication" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Traductio__IdLan__14270015" Association="Self.FK__Traductio__IdLan__14270015">
+            <End Role="Langue" EntitySet="Langue" />
+            <End Role="Traduction" EntitySet="Traduction" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Maintenan__IdRes__76969D2E" Association="Self.FK__Maintenan__IdRes__76969D2E">
+            <End Role="Utilisateur" EntitySet="Utilisateur" />
+            <End Role="Maintenance" EntitySet="Maintenance" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Media__IdAuteur__787EE5A0" Association="Self.FK__Media__IdAuteur__787EE5A0">
+            <End Role="Utilisateur" EntitySet="Utilisateur" />
+            <End Role="Media" EntitySet="Media" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Media__IdPublica__1AD3FDA4" Association="Self.FK__Media__IdPublica__1AD3FDA4">
+            <End Role="Publication" EntitySet="Publication" />
+            <End Role="Media" EntitySet="Media" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Media__IdStatut__797309D9" Association="Self.FK__Media__IdStatut__797309D9">
+            <End Role="Statut" EntitySet="Statut" />
+            <End Role="Media" EntitySet="Media" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Media__IdTypeBlo__7A672E12" Association="Self.FK__Media__IdTypeBlo__7A672E12">
+            <End Role="TypeBloc" EntitySet="TypeBloc" />
+            <End Role="Media" EntitySet="Media" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Media__IdTypeMed__7B5B524B" Association="Self.FK__Media__IdTypeMed__7B5B524B">
+            <End Role="TypeMedia" EntitySet="TypeMedia" />
+            <End Role="Media" EntitySet="Media" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Notificat__IdPie__06CD04F7" Association="Self.FK__Notificat__IdPie__06CD04F7">
+            <End Role="Media" EntitySet="Media" />
+            <End Role="Notification" EntitySet="Notification" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Page__IdMaquette__0A9D95DB" Association="Self.FK__Page__IdMaquette__0A9D95DB">
+            <End Role="Media" EntitySet="Media" />
+            <End Role="Page" EntitySet="Page" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Message__IdAuteu__7C4F7684" Association="Self.FK__Message__IdAuteu__7C4F7684">
+            <End Role="Utilisateur" EntitySet="Utilisateur" />
+            <End Role="Message" EntitySet="Message" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Message__IdStatu__3B40CD36" Association="Self.FK__Message__IdStatu__3B40CD36">
+            <End Role="Statut" EntitySet="Statut" />
+            <End Role="Message" EntitySet="Message" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Messageri__IdAut__00200768" Association="Self.FK__Messageri__IdAut__00200768">
+            <End Role="Utilisateur" EntitySet="Utilisateur" />
+            <End Role="Messagerie" EntitySet="Messagerie" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Messageri__IdSta__01142BA1" Association="Self.FK__Messageri__IdSta__01142BA1">
+            <End Role="Statut" EntitySet="Statut" />
+            <End Role="Messagerie" EntitySet="Messagerie" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MotClefCa__IdMot__03F0984C" Association="Self.FK__MotClefCa__IdMot__03F0984C">
+            <End Role="MotClef" EntitySet="MotClef" />
+            <End Role="MotClefCategorie" EntitySet="MotClefCategorie" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Notificat__IdDes__04E4BC85" Association="Self.FK__Notificat__IdDes__04E4BC85">
+            <End Role="Utilisateur" EntitySet="Utilisateur" />
+            <End Role="Notification" EntitySet="Notification" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Notificat__IdExp__05D8E0BE" Association="Self.FK__Notificat__IdExp__05D8E0BE">
+            <End Role="Utilisateur" EntitySet="Utilisateur" />
+            <End Role="Notification" EntitySet="Notification" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Page__IdAuteur__08B54D69" Association="Self.FK__Page__IdAuteur__08B54D69">
+            <End Role="Utilisateur" EntitySet="Utilisateur" />
+            <End Role="Page" EntitySet="Page" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Page__IdPublicat__0B91BA14" Association="Self.FK__Page__IdPublicat__0B91BA14">
+            <End Role="Publication" EntitySet="Publication" />
+            <End Role="Page" EntitySet="Page" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Page__IdStatut__0C85DE4D" Association="Self.FK__Page__IdStatut__0C85DE4D">
+            <End Role="Statut" EntitySet="Statut" />
+            <End Role="Page" EntitySet="Page" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Page__IdStyle__0D7A0286" Association="Self.FK__Page__IdStyle__0D7A0286">
+            <End Role="Style" EntitySet="Style" />
+            <End Role="Page" EntitySet="Page" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Publicati__IdAut__0F624AF8" Association="Self.FK__Publicati__IdAut__0F624AF8">
+            <End Role="Utilisateur" EntitySet="Utilisateur" />
+            <End Role="Publication" EntitySet="Publication" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Publicati__IdSta__123EB7A3" Association="Self.FK__Publicati__IdSta__123EB7A3">
+            <End Role="Statut" EntitySet="Statut" />
+            <End Role="Publication" EntitySet="Publication" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Publicati__IdTyp__1332DBDC" Association="Self.FK__Publicati__IdTyp__1332DBDC">
+            <End Role="TypePublication" EntitySet="TypePublication" />
+            <End Role="Publication" EntitySet="Publication" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TypeBloc__IdStat__160F4887" Association="Self.FK__TypeBloc__IdStat__160F4887">
+            <End Role="Statut" EntitySet="Statut" />
+            <End Role="TypeBloc" EntitySet="TypeBloc" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Utilisate__IdSta__17F790F9" Association="Self.FK__Utilisate__IdSta__17F790F9">
+            <End Role="Statut" EntitySet="Statut" />
+            <End Role="Utilisateur" EntitySet="Utilisateur" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Utilisate__IdTro__18EBB532" Association="Self.FK__Utilisate__IdTro__18EBB532">
+            <End Role="Trophee" EntitySet="Trophee" />
+            <End Role="Utilisateur" EntitySet="Utilisateur" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MasterCodeModelStoreContainer" CdmEntityContainer="MasterCodeEntities">
+          <EntitySetMapping Name="Acces">
+            <EntityTypeMapping TypeName="MasterCodeModel.Acces">
+              <MappingFragment StoreEntitySet="Acces">
+                <ScalarProperty Name="IdAcces" ColumnName="IdAcces" />
+                <ScalarProperty Name="typeAcces" ColumnName="typeAcces" />
+                <ScalarProperty Name="niveauAcces" ColumnName="niveauAcces" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bloc">
+            <EntityTypeMapping TypeName="MasterCodeModel.Bloc">
+              <MappingFragment StoreEntitySet="Bloc">
+                <ScalarProperty Name="IdBloc" ColumnName="IdBloc" />
+                <ScalarProperty Name="cheminTemplate" ColumnName="cheminTemplate" />
+                <ScalarProperty Name="IdTypeBloc" ColumnName="IdTypeBloc" />
+                <ScalarProperty Name="IdReference" ColumnName="IdReference" />
+                <ScalarProperty Name="IdStyle" ColumnName="IdStyle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categorie">
+            <EntityTypeMapping TypeName="MasterCodeModel.Categorie">
+              <MappingFragment StoreEntitySet="Categorie">
+                <ScalarProperty Name="IdCategorie" ColumnName="IdCategorie" />
+                <ScalarProperty Name="LibelleCategorie" ColumnName="LibelleCategorie" />
+                <ScalarProperty Name="IdCategorieParent" ColumnName="IdCategorieParent" />
+                <ScalarProperty Name="IdAcces" ColumnName="IdAcces" />
+                <ScalarProperty Name="IdStatut" ColumnName="IdStatut" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Commentaire">
+            <EntityTypeMapping TypeName="MasterCodeModel.Commentaire">
+              <MappingFragment StoreEntitySet="Commentaire">
+                <ScalarProperty Name="IdCommentaire" ColumnName="IdCommentaire" />
+                <ScalarProperty Name="Texte" ColumnName="Texte" />
+                <ScalarProperty Name="IdPublication" ColumnName="IdPublication" />
+                <ScalarProperty Name="IdAuteur" ColumnName="IdAuteur" />
+                <ScalarProperty Name="DateCreation" ColumnName="DateCreation" />
+                <ScalarProperty Name="IdStatut" ColumnName="IdStatut" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Forum">
+            <EntityTypeMapping TypeName="MasterCodeModel.Forum">
+              <MappingFragment StoreEntitySet="Forum">
+                <ScalarProperty Name="IdForum" ColumnName="IdForum" />
+                <ScalarProperty Name="Sujet" ColumnName="Sujet" />
+                <ScalarProperty Name="DatePublication" ColumnName="DatePublication" />
+                <ScalarProperty Name="MotsClefs" ColumnName="MotsClefs" />
+                <ScalarProperty Name="Popularite" ColumnName="Popularite" />
+                <ScalarProperty Name="IdCategorie" ColumnName="IdCategorie" />
+                <ScalarProperty Name="IdStatut" ColumnName="IdStatut" />
+                <ScalarProperty Name="IdAcces" ColumnName="IdAcces" />
+                <ScalarProperty Name="IdLangue" ColumnName="IdLangue" />
+                <ScalarProperty Name="IdAuteur" ColumnName="IdAuteur" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Langue">
+            <EntityTypeMapping TypeName="MasterCodeModel.Langue">
+              <MappingFragment StoreEntitySet="Langue">
+                <ScalarProperty Name="IdLangue" ColumnName="IdLangue" />
+                <ScalarProperty Name="codeAlpha" ColumnName="codeAlpha" />
+                <ScalarProperty Name="Pays" ColumnName="Pays" />
+                <ScalarProperty Name="cheminIcone" ColumnName="cheminIcone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Maintenance">
+            <EntityTypeMapping TypeName="MasterCodeModel.Maintenance">
+              <MappingFragment StoreEntitySet="Maintenance">
+                <ScalarProperty Name="IdMaintenance" ColumnName="IdMaintenance" />
+                <ScalarProperty Name="ModeMaintenance" ColumnName="ModeMaintenance" />
+                <ScalarProperty Name="DateDebut" ColumnName="DateDebut" />
+                <ScalarProperty Name="DateFinPrevue" ColumnName="DateFinPrevue" />
+                <ScalarProperty Name="DateFinEffective" ColumnName="DateFinEffective" />
+                <ScalarProperty Name="IdResponsable" ColumnName="IdResponsable" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Media">
+            <EntityTypeMapping TypeName="MasterCodeModel.Media">
+              <MappingFragment StoreEntitySet="Media">
+                <ScalarProperty Name="IdMedia" ColumnName="IdMedia" />
+                <ScalarProperty Name="Chemin" ColumnName="Chemin" />
+                <ScalarProperty Name="C_Image" ColumnName="_Image" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DatePublication" ColumnName="DatePublication" />
+                <ScalarProperty Name="IdStatut" ColumnName="IdStatut" />
+                <ScalarProperty Name="IdAcces" ColumnName="IdAcces" />
+                <ScalarProperty Name="IdTypeMedia" ColumnName="IdTypeMedia" />
+                <ScalarProperty Name="IdAuteur" ColumnName="IdAuteur" />
+                <ScalarProperty Name="IdReference" ColumnName="IdReference" />
+                <ScalarProperty Name="IdTypeBloc" ColumnName="IdTypeBloc" />
+                <ScalarProperty Name="IdPublication" ColumnName="IdPublication" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Message">
+            <EntityTypeMapping TypeName="MasterCodeModel.Message">
+              <MappingFragment StoreEntitySet="Message">
+                <ScalarProperty Name="IdMessage" ColumnName="IdMessage" />
+                <ScalarProperty Name="IdMessageParent" ColumnName="IdMessageParent" />
+                <ScalarProperty Name="IdForum" ColumnName="IdForum" />
+                <ScalarProperty Name="Texte" ColumnName="Texte" />
+                <ScalarProperty Name="Popularite" ColumnName="Popularite" />
+                <ScalarProperty Name="IdStatut" ColumnName="IdStatut" />
+                <ScalarProperty Name="IdAuteur" ColumnName="IdAuteur" />
+                <ScalarProperty Name="DatePublication" ColumnName="DatePublication" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Messagerie">
+            <EntityTypeMapping TypeName="MasterCodeModel.Messagerie">
+              <MappingFragment StoreEntitySet="Messagerie">
+                <ScalarProperty Name="IdMessagerie" ColumnName="IdMessagerie" />
+                <ScalarProperty Name="Texte" ColumnName="Texte" />
+                <ScalarProperty Name="DatePublication" ColumnName="DatePublication" />
+                <ScalarProperty Name="DateFin" ColumnName="DateFin" />
+                <ScalarProperty Name="IdMessagerieParent" ColumnName="IdMessagerieParent" />
+                <ScalarProperty Name="IdAuteur" ColumnName="IdAuteur" />
+                <ScalarProperty Name="IdStatut" ColumnName="IdStatut" />
+                <ScalarProperty Name="IdAcces" ColumnName="IdAcces" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MotClef">
+            <EntityTypeMapping TypeName="MasterCodeModel.MotClef">
+              <MappingFragment StoreEntitySet="MotClef">
+                <ScalarProperty Name="IdMotClef" ColumnName="IdMotClef" />
+                <ScalarProperty Name="MotCle" ColumnName="MotCle" />
+                <ScalarProperty Name="IdLangue" ColumnName="IdLangue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MotClefCategorie">
+            <EntityTypeMapping TypeName="MasterCodeModel.MotClefCategorie">
+              <MappingFragment StoreEntitySet="MotClefCategorie">
+                <ScalarProperty Name="IdMotClefCategorie" ColumnName="IdMotClefCategorie" />
+                <ScalarProperty Name="IdMotClef" ColumnName="IdMotClef" />
+                <ScalarProperty Name="IdCategorie" ColumnName="IdCategorie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notification">
+            <EntityTypeMapping TypeName="MasterCodeModel.Notification">
+              <MappingFragment StoreEntitySet="Notification">
+                <ScalarProperty Name="IdNotification" ColumnName="IdNotification" />
+                <ScalarProperty Name="Objet" ColumnName="Objet" />
+                <ScalarProperty Name="Texte" ColumnName="Texte" />
+                <ScalarProperty Name="IdExpediteur" ColumnName="IdExpediteur" />
+                <ScalarProperty Name="IdDestinataire" ColumnName="IdDestinataire" />
+                <ScalarProperty Name="IdPieceJointe" ColumnName="IdPieceJointe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Page">
+            <EntityTypeMapping TypeName="MasterCodeModel.Page">
+              <MappingFragment StoreEntitySet="Page">
+                <ScalarProperty Name="IdPage" ColumnName="IdPage" />
+                <ScalarProperty Name="Titre" ColumnName="Titre" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="typePage" ColumnName="typePage" />
+                <ScalarProperty Name="Blocs" ColumnName="Blocs" />
+                <ScalarProperty Name="DatePublication" ColumnName="DatePublication" />
+                <ScalarProperty Name="DateModification" ColumnName="DateModification" />
+                <ScalarProperty Name="IdPublication" ColumnName="IdPublication" />
+                <ScalarProperty Name="IdAuteur" ColumnName="IdAuteur" />
+                <ScalarProperty Name="IdMaquette" ColumnName="IdMaquette" />
+                <ScalarProperty Name="IdCategorie" ColumnName="IdCategorie" />
+                <ScalarProperty Name="IdAcces" ColumnName="IdAcces" />
+                <ScalarProperty Name="IdStatut" ColumnName="IdStatut" />
+                <ScalarProperty Name="IdStyle" ColumnName="IdStyle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Priorite">
+            <EntityTypeMapping TypeName="MasterCodeModel.Priorite">
+              <MappingFragment StoreEntitySet="Priorite">
+                <ScalarProperty Name="IdPriorite" ColumnName="IdPriorite" />
+                <ScalarProperty Name="typePriorite" ColumnName="typePriorite" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Publication">
+            <EntityTypeMapping TypeName="MasterCodeModel.Publication">
+              <MappingFragment StoreEntitySet="Publication">
+                <ScalarProperty Name="IdPublication" ColumnName="IdPublication" />
+                <ScalarProperty Name="Titre" ColumnName="Titre" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Resume" ColumnName="Resume" />
+                <ScalarProperty Name="Texte" ColumnName="Texte" />
+                <ScalarProperty Name="Champ1" ColumnName="Champ1" />
+                <ScalarProperty Name="Champ2" ColumnName="Champ2" />
+                <ScalarProperty Name="Champ3" ColumnName="Champ3" />
+                <ScalarProperty Name="Champ4" ColumnName="Champ4" />
+                <ScalarProperty Name="DatePublication" ColumnName="DatePublication" />
+                <ScalarProperty Name="DateModification" ColumnName="DateModification" />
+                <ScalarProperty Name="Popularite" ColumnName="Popularite" />
+                <ScalarProperty Name="MotsClefs" ColumnName="MotsClefs" />
+                <ScalarProperty Name="IdAuteur" ColumnName="IdAuteur" />
+                <ScalarProperty Name="IdPublicationParent" ColumnName="IdPublicationParent" />
+                <ScalarProperty Name="IdTypePublication" ColumnName="IdTypePublication" />
+                <ScalarProperty Name="IdCategorie" ColumnName="IdCategorie" />
+                <ScalarProperty Name="IdAcces" ColumnName="IdAcces" />
+                <ScalarProperty Name="IdStatut" ColumnName="IdStatut" />
+                <ScalarProperty Name="IdLangue" ColumnName="IdLangue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Publicite">
+            <EntityTypeMapping TypeName="MasterCodeModel.Publicite">
+              <MappingFragment StoreEntitySet="Publicite">
+                <ScalarProperty Name="IdPublicite" ColumnName="IdPublicite" />
+                <ScalarProperty Name="Regie" ColumnName="Regie" />
+                <ScalarProperty Name="NbreClics" ColumnName="NbreClics" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Recherche">
+            <EntityTypeMapping TypeName="MasterCodeModel.Recherche">
+              <MappingFragment StoreEntitySet="Recherche">
+                <ScalarProperty Name="IdRecherche" ColumnName="IdRecherche" />
+                <ScalarProperty Name="Demande" ColumnName="Demande" />
+                <ScalarProperty Name="Resultat" ColumnName="Resultat" />
+                <ScalarProperty Name="NbreDemande" ColumnName="NbreDemande" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Statut">
+            <EntityTypeMapping TypeName="MasterCodeModel.Statut">
+              <MappingFragment StoreEntitySet="Statut">
+                <ScalarProperty Name="IdStatut" ColumnName="IdStatut" />
+                <ScalarProperty Name="typeStatut" ColumnName="typeStatut" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Style">
+            <EntityTypeMapping TypeName="MasterCodeModel.Style">
+              <MappingFragment StoreEntitySet="Style">
+                <ScalarProperty Name="IdStyle" ColumnName="IdStyle" />
+                <ScalarProperty Name="cheminStyle" ColumnName="cheminStyle" />
+                <ScalarProperty Name="feuilleStyle" ColumnName="feuilleStyle" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Traduction">
+            <EntityTypeMapping TypeName="MasterCodeModel.Traduction">
+              <MappingFragment StoreEntitySet="Traduction">
+                <ScalarProperty Name="IdTraduction" ColumnName="IdTraduction" />
+                <ScalarProperty Name="DefaultTexte" ColumnName="DefaultTexte" />
+                <ScalarProperty Name="TraductionTexte" ColumnName="TraductionTexte" />
+                <ScalarProperty Name="IdLangue" ColumnName="IdLangue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trophee">
+            <EntityTypeMapping TypeName="MasterCodeModel.Trophee">
+              <MappingFragment StoreEntitySet="Trophee">
+                <ScalarProperty Name="IdTrophee" ColumnName="IdTrophee" />
+                <ScalarProperty Name="typeTrophee" ColumnName="typeTrophee" />
+                <ScalarProperty Name="cheminIcone" ColumnName="cheminIcone" />
+                <ScalarProperty Name="Seuil" ColumnName="Seuil" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeBloc">
+            <EntityTypeMapping TypeName="MasterCodeModel.TypeBloc">
+              <MappingFragment StoreEntitySet="TypeBloc">
+                <ScalarProperty Name="IdTypeBloc" ColumnName="IdTypeBloc" />
+                <ScalarProperty Name="NomBloc" ColumnName="NomBloc" />
+                <ScalarProperty Name="IdAcces" ColumnName="IdAcces" />
+                <ScalarProperty Name="IdStatut" ColumnName="IdStatut" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeMedia">
+            <EntityTypeMapping TypeName="MasterCodeModel.TypeMedia">
+              <MappingFragment StoreEntitySet="TypeMedia">
+                <ScalarProperty Name="IdTypeMedia" ColumnName="IdTypeMedia" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypePublication">
+            <EntityTypeMapping TypeName="MasterCodeModel.TypePublication">
+              <MappingFragment StoreEntitySet="TypePublication">
+                <ScalarProperty Name="IdTypePublication" ColumnName="IdTypePublication" />
+                <ScalarProperty Name="Publication" ColumnName="Publication" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Utilisateur">
+            <EntityTypeMapping TypeName="MasterCodeModel.Utilisateur">
+              <MappingFragment StoreEntitySet="Utilisateur">
+                <ScalarProperty Name="IdUtilisateur" ColumnName="IdUtilisateur" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+                <ScalarProperty Name="Pseudo" ColumnName="Pseudo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="MotdePasse" ColumnName="MotdePasse" />
+                <ScalarProperty Name="MotsClefs" ColumnName="MotsClefs" />
+                <ScalarProperty Name="IdStatut" ColumnName="IdStatut" />
+                <ScalarProperty Name="IdAcces" ColumnName="IdAcces" />
+                <ScalarProperty Name="IdLangue" ColumnName="IdLangue" />
+                <ScalarProperty Name="IdTrophee" ColumnName="IdTrophee" />
+                <ScalarProperty Name="DateCreation" ColumnName="DateCreation" />
+                <ScalarProperty Name="Popularite" ColumnName="Popularite" />
+                <ScalarProperty Name="CheminAvatar" ColumnName="CheminAvatar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
