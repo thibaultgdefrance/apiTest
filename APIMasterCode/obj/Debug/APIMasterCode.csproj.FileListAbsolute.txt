@@ -98,3 +98,4 @@ C:\inetpub\wwwroot\APIMasterCode\APIMasterCode\obj\Debug\APIMasterCode.csproj.Co
 C:\inetpub\wwwroot\APIMasterCode\APIMasterCode\obj\Debug\APIMasterCode.csproj.CopyComplete
 C:\inetpub\wwwroot\APIMasterCode\APIMasterCode\obj\Debug\APIMasterCode.dll
 C:\inetpub\wwwroot\APIMasterCode\APIMasterCode\obj\Debug\APIMasterCode.pdb
+C:\inetpub\wwwroot\APIMasterCode\APIMasterCode\obj\Debug\APIMasterCode.csprojAssemblyReference.cache

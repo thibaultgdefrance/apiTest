@@ -103,6 +103,7 @@ namespace APIMasterCode.Controllers
             foreach (var item in messages)
             {
                 MessageForum message = new MessageForum();
+                message.IdMessage = item.IdMessage.ToString();
                 message.IdForum = IdForum.ToString();
                 message.PseudoUtilisateur = item.Utilisateur.Pseudo;
                 DateTime dt = (DateTime)item.DatePublication;
@@ -110,6 +111,7 @@ namespace APIMasterCode.Controllers
                 message.TexteMessage = item.Texte;
                 message.TitreForum = item.Forum.Sujet;
                 message.CheminAvatar = item.Utilisateur.CheminAvatar;
+                message.IdAuteur = item.IdAuteur.ToString();
                 messagesForum.Add(message);
             }
 
